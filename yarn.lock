@@ -672,6 +672,13 @@
   dependencies:
     "hexo-pagination" "3.0.0"
 
+"hexo-generator-searchdb@^1.4.1":
+  "integrity" "sha512-7m8IBpZbI6iKb2jRYxs4pghD6Ln8ylQSRGl6MIC4G9wws21vYSXSD8rvC3MoCO+pWBHs6E/mTA/rjG+p2AZfVg=="
+  "resolved" "https://registry.npmjs.org/hexo-generator-searchdb/-/hexo-generator-searchdb-1.4.1.tgz"
+  "version" "1.4.1"
+  dependencies:
+    "nunjucks" "^3.2.2"
+
 "hexo-generator-tag@^2.0.0":
   "integrity" "sha512-1px/hF3veEohWDN8jjzchQhaiz+uOStUvvMaBJC9vWOlALh30UFcapL8IrvAwwJZjFRVA+WqGgDRqoQ8+yaaFw=="
   "resolved" "https://registry.npmjs.org/hexo-generator-tag/-/hexo-generator-tag-2.0.0.tgz"
@@ -775,6 +782,11 @@
     "htmlparser2" "^9.0.0"
     "prismjs" "^1.29.0"
     "strip-indent" "^3.0.0"
+
+"hexo-wordcount@^6.0.1":
+  "integrity" "sha512-tbo2P9xRWEKQmRf7+XuPjx9It1MnaE26nA+EEb2DN39gK1x+26W7Nm4Iyp4AugQjBWYYDx7OLn4gp1WFxQpQew=="
+  "resolved" "https://registry.npmjs.org/hexo-wordcount/-/hexo-wordcount-6.0.1.tgz"
+  "version" "6.0.1"
 
 "hexo@^6.3.0":
   "integrity" "sha512-4Jq+rWd8sYvR1YdIQyndN/9WboQ/Mqm6eax8CjrjO+ePFm2oMVafSOx9WEyJ42wcLOHjfyMfnlQhnUuNmJIpPg=="
@@ -1150,7 +1162,7 @@
   "resolved" "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
   "version" "3.0.0"
 
-"nunjucks@^3.2.3":
+"nunjucks@^3.2.2", "nunjucks@^3.2.3":
   "integrity" "sha512-26XRV6BhkgK0VOxfbU5cQI+ICFUtMLixv1noZn1tGU38kQH5A5nmmbk/O45xdyBhD1esk47nKrY0mvQpZIhRjQ=="
   "resolved" "https://registry.npmjs.org/nunjucks/-/nunjucks-3.2.4.tgz"
   "version" "3.2.4"
