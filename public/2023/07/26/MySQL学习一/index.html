@@ -9,7 +9,7 @@
     
     <title>
         
-            Hello World |
+            MySQL学习一 |
         
         大猪猪的小窝
     </title>
@@ -143,7 +143,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Hello World</span>
+                <span class="title-hover-animation">MySQL学习一</span>
             </div>
 
             
@@ -165,13 +165,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-07-26 14:37:24</span>
-        <span class="mobile">2023-07-26 14:37</span>
+        <span class="pc">2023-07-26 18:05:02</span>
+        <span class="mobile">2023-07-26 18:05</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-07-26 14:37:24</span>
+        <span class="pc">2023-07-26 18:05:36</span>
     </span>
     
     
@@ -180,12 +180,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>75 字數</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>944 字數</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分鐘</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分鐘</span>
         </span>
     
     
@@ -199,19 +199,138 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+                <p><strong>一、数据库相关的概念</strong>  </p>
+<p>数据库（DB）：存储数据的仓库，数据是有组织的进行存储。</p>
+<p>数据库管理系统（DBMS）：操作和管理数据库的大型软件。‍‍‍‍‍‍‍</p>
+<p>SQL：操作关系型数据库的编程语言，定义了一套操作关系型数据库的统一标准。‍‍‍‍</p>
+<p><strong>二、主流的数据库管理系统</strong></p>
+<p>1、Oracle：oracle公司研发，大型且收费。</p>
+<p>2、MySQL：小型，有免费游收费。‍</p>
+<p>3、PostgreSQL：中小型数据库，免费。</p>
+<p>4、SQLite：嵌入性数据库，安卓系统采用SQLite。</p>
+<p>. . . . . .‍‍‍</p>
+<p><strong>三、MySQL的安装和启动</strong>‍‍‍</p>
+<p>版本：</p>
+<ul>
+<li><p>社区版（MySQL Community Server）</p>
+<p>免费，MySQL不提供任何技术支持。</p>
+</li>
+</ul>
+<p>‍‍‍</p>
+<ul>
+<li><p>商业版（MySQL Enterprise Edition）‍‍</p>
+<p>收费，可试用，MySQL提供技术支持。</p>
+</li>
+</ul>
+<p>下载地址：</p>
+<p> <a class="link"   target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/" >https://dev.mysql.com/downloads/<i class="fas fa-external-link-alt"></i></a> 或者 <a class="link"   target="_blank" rel="noopener" href="https://www.mysql.com/" >https://www.mysql.com/<i class="fas fa-external-link-alt"></i></a> 依次点击如下进入下载列表页  </p>
+<p>下载 MySQL Community Server 版（根据自身情况选择），然后选择对应的小版本下载，最后一步可以不用登录和注册。</p>
+<p>‍‍</p>
+<p>安装步骤：</p>
+<p>1、上传下载的安装包到服务器的 &#x2F;usr&#x2F;local 目录下‍</p>
+<p>2、使用 tar 命令解压下载的安装包‍</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`tar -xvf mysql-8.0.33-linux-glibc2.12-x86_64.tar.xz``参数说明：``-x：解压缩压缩档案的参数``-v：压缩的过程中显示档案``-f：置顶文档名，在f后面立即接文件名，不能再加参数`</span><br></pre></td></tr></table></figure>
+<p>3、重命名解压后的文件夹</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv mysql-8.0.33-linux-glibc2.12-x86_64 mysql</span><br></pre></td></tr></table></figure>
+<p>4、修改MySQL的配置文件</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<p>‍‍</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`[mysqld]``basedir=/usr/local/mysql``datadir=/usr/local/mysql/data``socket=/tmp/mysql.sock``character-set-server=utf8mb4``sql_mode =STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION``# Disabling symbolic-links is recommended to prevent assorted security risks``symbolic-links=0``# Settings user and group are ignored when systemd is used.``# If you need to run mysqld under a different user or group,``# customize your systemd unit file for mariadb according to the``# instructions in http://fedoraproject.org/wiki/Systemd``[mysqld_safe]``log-error=/var/log/mariadb/mariadb.log``pid-file=/var/run/mariadb/mariadb.pid``#``# include all files from the config directory``#``!includedir /etc/my.cnf.d`</span><br></pre></td></tr></table></figure>
+<p>‍‍</p>
+<p>然后 :wq 退出编辑。‍‍‍‍‍‍‍</p>
+<p>5、新建用户和用户组‍</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/groupadd mysql               # 创建用户组useradd -r -g mysql mysql    # 创建用户并且指定用户组chown -R mysql:mysql ./      # 修改当前文件的归属用户和用户组</span><br></pre></td></tr></table></figure>
+<p>6、初始化数据库，分别执行如下命令</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/mkdir ./data./bin/mysqld --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data/ --initialize</span><br></pre></td></tr></table></figure>
+<p>第三步命令如果报错：‍‍‍‍.&#x2F;bin&#x2F;mysqld: error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory 的话说明当前缺少了libaio.so.1库，执行如下命令安装libaio.so.1库。</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y libaio</span><br></pre></td></tr></table></figure>
+<p>安装成功后再次执行第三条命令，出现如下界面则说明安装成功了，最后的初始化密码要记住。</p>
+<p>7、添加MySQL到系统服务中并且建立软连接‍</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -a ./support-files/mysql.server /etc/init.d/mysqlchmod +x /etc/init.d/mysqlchkconfig --add mysqlchkconfig --list mysql #检查是否生效</span><br></pre></td></tr></table></figure>
+<p>建立软连接</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/mysql/bin/mysql /usr/bin</span><br></pre></td></tr></table></figure>
+<p>8、启动并且登录MySQL</p>
+<p>执行 service mysql start命令，出现Success则说明启动成功。 </p>
+<p>登录MySQL‍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>回车然后输入刚才的初始化密码，输入时光标并不会有任何变化。  </p>
+<p>修改用户密码</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &quot;root&quot;@&quot;localhost&quot; IDENTIFIED  BY &quot;你的新密码&quot;;FLUSH PRIVILEGES;  #配置生效</span><br></pre></td></tr></table></figure>
+<p>修改如下配置，使得root用户可以远程连接。‍‍</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql;  update user set host=&#x27;%&#x27; where user =&#x27;root&#x27;;FLUSH PRIVILEGES;    #配置生效</span><br></pre></td></tr></table></figure>
+<p>四、MySQL的数据模型</p>
+<p>关系型数据库（RDBMS）</p>
+<p>概念：建立在关系型模型基础上，由多张相互连接的二维表组成的数据库。</p>
+<p>特点：1、使用表结构存储。格式统一便于维护。2、使用SQL语言操作，标准统一使用方便。</p>
 
             </div>
 
@@ -221,16 +340,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">文章標題</span>：<span class="content">Hello World</span>
+            <span class="type">文章標題</span>：<span class="content">MySQL学习一</span>
         </li>
         <li class="post-author">
             <span class="type">文章作者</span>：<span class="content">何进磊</span>
         </li>
         <li class="post-time">
-            <span class="type">撰寫時間</span>：<span class="content">2023-07-26 14:37:24</span>
+            <span class="type">撰寫時間</span>：<span class="content">2023-07-26 18:05:02</span>
         </li>
         <li class="post-link">
-            <span class="type">永久連結</span>：<span class="content">2023/07/26/hello-world/</span>
+            <span class="type">永久連結</span>：<span class="content">2023/07/26/MySQL学习一/</span>
         </li>
         <li class="post-license">
             <span class="type">版權宣告</span>：<span class="content">這個網站所有文章均使用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 授權</span>
@@ -249,21 +368,21 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/07/26/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/"
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/07/26/hello-world/"
                             >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-item">下一篇</span>
                             </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">MySQL学习一</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
                             </span>
                             </a>
                         </div>
-                    
                     
                 </div>
             
@@ -275,7 +394,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        
     </div>
 </div>
 
