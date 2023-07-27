@@ -11,10 +11,10 @@
 # ---------------------------------------------------------------------------------------
 base_info:
   # Your blog website title
-  title: Keep Theme
+  title: 何进磊的小窝
 
   # Your blog website author name
-  author: Keep Team
+  author: 何进磊
 
 # ---------------------------------------------------------------------------------------
 # Theme style settings
@@ -32,7 +32,7 @@ style:
   favicon: /images/logo.svg
 
   # Avatar (You can use local image or image external link)
-  avatar: /images/avatar.svg
+  avatar: /images/avatar.jpg
 
   # Font size, customize font size. (you don't usually have to fill)
   # e.g. font_size: 18px
@@ -45,9 +45,9 @@ style:
   # Mouse hover style settings
   hover:
     # Shadow effect when the mouse hover
-    shadow: false  # Option values: true | false
+    shadow: true  # Option values: true | false
     # Scale effect when the mouse hovers
-    scale: false   # Option values: true | false
+    scale: true   # Option values: true | false
 
   # First screen style settings
   first_screen:
@@ -85,12 +85,13 @@ style:
 # If you want to enable Categories and Tags, you need to create categories and tags pages
 # e.g. `hexo new page categories` or `hexo new page tags`
 menu:
-  Home: /
-  Archives: /archives
+  首页: /
+  归档: /archives
+  Chat GPT: http://www.tanainaide.uk:1107
   # Tags: /tags
   # Categories: /categories
   # Links: /links
-  About: /about
+  关于: /about
   # Changelog: /changelog
   # ......
 
@@ -106,7 +107,7 @@ social_contact:
     # at the same time change your link to the image link.
     # e.g. [ weixin: img | https://x.com/images/wechat.png ] or [ weixin: img | ./images/wechat.png ]
     github:          # GitHub
-    weixin:          # WeChat
+    weixin: ./images/wechat.png         # WeChat
     qq:              # QQ
     weibo:           # WeiBo
     zhihu:           # ZhiHu
@@ -139,17 +140,17 @@ post:
 
     # If true, show Lv1, Lv2, Lv3 ...
     # If false, show custom_label_list
-    auto: true    # Option values: true | false
+    auto: false    # Option values: true | false
 
     # Label array item can be fill one or more
-    custom_label_list: ["Trainee", "Engineer", "Architect"]
+    custom_label_list: ["后端攻城狮"]
 
   # Post word count
   # Dependencies: hexo-wordcount (`npm install hexo-wordcount`)
   # See: https://github.com/willin/hexo-wordcount
   word_count:
-    enable: false       # Option values: true | false
-    wordcount: false    # Word count, one article. Option values: true | false
+    enable: true       # Option values: true | false
+    wordcount: true    # Word count, one article. Option values: true | false
     min2read: false     # Time to read, one article. Option values: true | false
 
   # Image align position in the post
@@ -288,8 +289,8 @@ pjax:
 # Docs: https://keep-docs.xpoet.cn/tutorial/configuration-guide/footer.html
 # ---------------------------------------------------------------------------------------
 footer:
-  since: 2020  # The starting year of your website, Can be null
-  icp:         # ICP record number of your website, Can be null
+  since: 2021  # The starting year of your website, Can be null
+  icp: 陇ICP备2021002930号        # ICP record number of your website, Can be null
   site_deploy:
     enable: false       # Option values: true | false
     provider: github    # Option values: github | vercel | netlify | gitee | aliyun | tencent_cloud | upyun
