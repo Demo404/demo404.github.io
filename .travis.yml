@@ -33,5 +33,3 @@ deploy:
   target-branch: master # 推送的目标分支 local_dir->>master 分支
   on:
     branch: hexo # 工作分支
-
-    ### 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
