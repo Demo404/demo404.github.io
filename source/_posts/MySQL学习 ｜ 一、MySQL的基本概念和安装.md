@@ -9,19 +9,19 @@ tags:
 
 数据库管理系统（DBMS）：操作和管理数据库的大型软件。‍‍‍‍‍‍‍
 
-SQL：操作关系型数据库的编程语言，定义了一套操作关系型数据库的统一标准。
+SQL：操作关系型数据库的编程语言，定义了一套操作关系型数据库的统一标准。  
 
-​		
+​		  
 
 #### **二、主流的数据库管理系统**
 
 1、Oracle：oracle公司研发，大型且收费。
 
-2、MySQL：小型，有免费游收费。‍
+2、MySQL：小型，有免费有收费。‍
 
 3、PostgreSQL：中小型数据库，免费。
 
-4、SQLite：嵌入性数据库，安卓系统采用SQLite。  \
+4、SQLite：嵌入性数据库，安卓系统采用SQLite。
 
 . . . . . .‍‍‍
 
@@ -41,7 +41,7 @@ SQL：操作关系型数据库的编程语言，定义了一套操作关系型�
     收费，可试用，MySQL提供技术支持。  
 
 ###### 下载地址：
-https://dev.mysql.com/downloads/ 或者 https://www.mysql.com/ 依次点击如下进入下载列表页。
+https://dev.mysql.com/downloads/ 或者 https://www.mysql.com/ 依次如下点击进行下载。
 
 ![http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468324&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:iAo6vdQ_978yosZckapZZMKMy6w=](http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468324&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:iAo6vdQ_978yosZckapZZMKMy6w=)
 
@@ -204,7 +204,7 @@ FLUSH PRIVILEGES;    #配置生效
 概念：建立在关系型模型基础上，由多张相互连接的二维表组成的数据库。
 
 特点：
-    1、使用表结构存储。格式统一便于维护。
-    2、使用SQL语言操作，标准统一使用方便。
+&emsp;&emsp; - 1、使用表结构存储。格式统一便于维护。
+&emsp;&emsp; - 2、使用SQL语言操作，标准统一使用方便。
 
 ![http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-%E4%B8%A4%E8%A1%A8%E5%85%B3%E7%B3%BB.png?e=1690468783&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:t-Vii9Y0MNOAsNm4RBNWX7R9Qm8=](http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-%E4%B8%A4%E8%A1%A8%E5%85%B3%E7%B3%BB.png?e=1690468783&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:t-Vii9Y0MNOAsNm4RBNWX7R9Qm8=)

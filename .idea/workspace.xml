@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="81f6b7a3-0399-4fa4-ac45-d3b093f08f32" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/07/26/MySQL学习一/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/07/26/hello-world/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/2023/07/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/2023/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/animated.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/basic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/code-block/code-block.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/code-block/code-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/code-block/highlight.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/keep-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/markdown.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/common/variables.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layout/archive-content.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layout/article-content.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layout/category-content.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layout/category-list.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layout/home-content.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layout/page.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/layout/tag-content.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/css/brands.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/css/fontawesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/css/regular.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/css/solid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-v4compatibility.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/font/webfonts/fa-v4compatibility.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/avatar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/avatar.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/bg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deploy-provider/aliyun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deploy-provider/gitee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deploy-provider/github.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deploy-provider/netlify.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deploy-provider/tencent_cloud.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deploy-provider/upyun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deploy-provider/vercel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/wechat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/back2top.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/code-block.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/dark-light-toggle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/header-shrink.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/lazyload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/libs/anime.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/libs/pjax.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/local-search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/post-helper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/toc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/MySQL学习一.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/keep/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/keep/_config.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2TBrGq55GHahlhOynbTRrROv8cC" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "hexo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81f6b7a3-0399-4fa4-ac45-d3b093f08f32" name="Changes" comment="" />
+      <created>1690527223924</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690527223924</updated>
+      <workItem from="1690527231122" duration="613000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
