@@ -88,11 +88,12 @@ menu:
   首页: /
   归档: /archives
   Chat GPT: http://www.tanainaide.uk:1107
-  # Tags: /tags
+  标签: /tags || tags
   # Categories: /categories
   # Links: /links
   # 关于: /about
   # Changelog: /changelog
+  分类: /cate
   # ......
 
 # ---------------------------------------------------------------------------------------

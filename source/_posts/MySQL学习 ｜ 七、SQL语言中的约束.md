@@ -1,7 +1,7 @@
 ---
 title: MySQL学习 ｜ 七、SQL语言中的约束
 date: 2023-08-01 21:34:03
-tags:
+tags: [数据库, MySQL]
 ---
 
 1、概念  

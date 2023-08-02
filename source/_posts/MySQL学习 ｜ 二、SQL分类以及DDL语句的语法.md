@@ -1,7 +1,7 @@
 ---
 title: MySQL学习 ｜ 二、SQL分类以及DDL语句的语法
 date: 2023-07-28 10:37:46
-tags: 数据库
+tags: [数据库, MySQL]
 ---
 
 #### **一、SQL的分类**‍
