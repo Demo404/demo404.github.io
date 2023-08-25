@@ -6,7 +6,7 @@
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="何进磊">
-    
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/highlight.js/8.8.0/styles/default.min.css"/>
     <title>
         
         大猪猪的小窝
@@ -398,6 +398,7 @@ SQL：操作关系型数据库的编程语言，定义了一套操作关系型�
 
 
     <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+    <!-- <script src="cdn.jsdelivr.net/highlight.js/8.8.0/highlight.min.js"></script> -->
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         window.pjax = new Pjax({
@@ -427,7 +428,9 @@ SQL：操作关系型数据库的编程语言，定义了一套操作关系型�
         });
     });
 </script>
-
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
 
 
 </body>
