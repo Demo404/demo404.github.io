@@ -1,5 +1,5 @@
 ---
-title: MySQL学习 ｜ 十二、SQL性能分析和优化
+title: MySQL学习 ｜ 十二、SQL性能分析和索引使用原则
 date: 2023-08-07 07:37:58
 tags: [数据库, MySQL]
 ---

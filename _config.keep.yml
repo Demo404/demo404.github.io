@@ -88,6 +88,7 @@ menu:
   首页: /
   归档: /archives
   标签: /tags
+  #关于我: /about
   Chat GPT: http://www.tanainaide.uk:1107
   # 分类: /categories
   # Links: /links
@@ -122,12 +123,12 @@ social_contact:
 home_article:
   # Show category in home page article block
   category:
-    enable: false  # Option values: true | false
+    enable: true  # Option values: true | false
     limit: 3       # Max number of categories shown in home page article block
   # Show tags in home page article block
   tag:
-    enable: false  # Option values: true | false
-    limit: 5       # Max number of tags shown in home page article block
+    enable: true  # Option values: true | false
+    limit: 3       # Max number of tags shown in home page article block
 
 # ---------------------------------------------------------------------------------------
 # Post page Settings
@@ -157,7 +158,7 @@ post:
   img_align: left  # Option values: left | center
 
   # Post copyright info
-  copyright_info: false  # Option values: true | false
+  copyright_info: true  # Option values: true | false
 
 # ---------------------------------------------------------------------------------------
 # Code block
@@ -194,10 +195,10 @@ website_count:
   # busuanzi
   # See: http://ibruce.info/2015/04/04/busuanzi/
   busuanzi_count:
-    enable: false     # Option values: true | false
-    site_uv: false    # Option values: true | false
-    site_pv: false    # Option values: true | false
-    page_pv: false    # Option values: true | false
+    enable: true     # Option values: true | false
+    site_uv: true    # Option values: true | false
+    site_pv: true    # Option values: true | false
+    page_pv: true    # Option values: true | false
 
 # ---------------------------------------------------------------------------------------
 # Local Search
