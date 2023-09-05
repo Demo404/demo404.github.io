@@ -14,7 +14,7 @@ tags: [数据库, MySQL]
 SHOW GLOBAL STATUS LIKE 'Com_______'
 ```
 
-![http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-07%2007.47.21.png?e=1691366143&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:BnUqlCMw7NIDASAk6F2A-ie_nbc=](http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-07%2007.47.21.png?e=1691366143&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:BnUqlCMw7NIDASAk6F2A-ie_nbc=)
+![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-07%2007.47.21.png?e=1691366143&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:BnUqlCMw7NIDASAk6F2A-ie_nbc=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-07%2007.47.21.png?e=1691366143&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:BnUqlCMw7NIDASAk6F2A-ie_nbc=)
 
 </br>
 
@@ -141,11 +141,11 @@ extra中显示的信息，MySQL版本不通则显示的不同。
 
 - 聚集索引（id）：
 
-![http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.33.png](http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.33.png)
+![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.33.png](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.33.png)
 
 - 辅助索引（name）：
 
-![http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.56.png](http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.56.png)
+![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.56.png](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.56.png)
 
 - 分别进行以下查询：
 

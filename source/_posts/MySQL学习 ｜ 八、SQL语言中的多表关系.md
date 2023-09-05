@@ -12,7 +12,7 @@ tags: [数据库, MySQL]
 
 1、内连接（C表示部分）
 
-![http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=](http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=)
+![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=)
 
 ```
 隐式内连接    
@@ -24,7 +24,7 @@ SELECT * FROM 表1 [INNER]JOIN 表2 ON 条件;
 
 2、外连接
 
-![http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=](http://rygkvvhh1.hd-bkt.clouddn.com/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=)
+![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%83/%E4%BA%A4%E9%9B%86.png?e=1690968544&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:G_CwMqknlqVOt7dnmlZ7kzEdw5k=)
 
 左外连接表示A和C部分
 
