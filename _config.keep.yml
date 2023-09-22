@@ -296,3 +296,13 @@ footer:
     enable: false       # Option values: true | false
     provider: github    # Option values: github | vercel | netlify | gitee | aliyun | tencent_cloud | upyun
     url:                # Your deployment provider url, Can be null
+
+# 百度站点提交
+baidu_url_submit:
+  count: 10
+  host: https://blog.goudan.ltd
+  token: 0lj3J6Dc1vVah2K1
+  path: baidu_urls.txt
+
+deploy:
+- type: baidu_url_submitter
