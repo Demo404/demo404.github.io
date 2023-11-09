@@ -18,7 +18,7 @@ tags: [数据库, MySQL]
 隐式内连接    
 SELECT * FROM 表1, 表2 WHERE 条件;
 
-显示外连接    
+显示内连接    
 SELECT * FROM 表1 [INNER]JOIN 表2 ON 条件;
 ```
 

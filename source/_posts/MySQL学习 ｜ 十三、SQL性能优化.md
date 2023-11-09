@@ -29,7 +29,7 @@ MySQL默认的是自动提交事物，多条插入语句时会频繁的开启、
 > #设置全局参数local_infile为1，开启从本地加载文件导入数据的开关。
 > set global local_infile = 1;
 > #执行load指令将准备好的数据加载到表结构中
-> load data local iinfile '数据文件路径' into table `表名` fields terminated by ',' lines terminated by '\n';
+> load data local infile '数据文件路径' into table `表名` fields terminated by ',' lines terminated by '\n';
 
 
 ##### 二、主键优化
@@ -37,7 +37,7 @@ MySQL默认的是自动提交事物，多条插入语句时会频繁的开启、
 **数据组织方式**
 在innoDB存储引擎中，表中数据都是根据主键顺序存放的，这种存储方式的表称为索引组织表（index orgnized tab）IOT。
 **页合并**
-当删除一行数据时，实际上记录并没有被物理删除，只是记录被标记（flaged）为删除并且它的空间变得允许被其他记录生声明使用。当页中删除的纪录达到MERGE_THRESHOLD（默认为页的50%），InnoDB就开始寻找最靠近的页（前或后）看看是否可以讲两个页合并以优化空间的使用。
+当删除一行数据时，实际上记录并没有被物理删除，只是记录被标记（flaged）为删除并且它的空间变得允许被其他记录声明使用。当页中删除的纪录达到MERGE_THRESHOLD（默认为页的50%），InnoDB就开始寻找最靠近的页（前或后）看看是否可以讲两个页合并以优化空间的使用。
 *MERGE_THRESHOLD*：合并页的阈值，可以自己设置，在创建表或者创建索引的时候指定。
 **主键设计原则**
 1、满足业务需求的情况下，尽量降低主键的长度，因为二级索引存储的数据就是主键。
@@ -133,11 +133,11 @@ update tb_user set name = 'zhang' where id = 1;
 此时为行锁，对并发无影响。
 
 ```
-update tb_user set name = 'li' where id = 2;
+update tb_user set name = 'li' where name = 'zhang';
 ```
 
 如果name字段无有效的索引，此时将会把整个表锁住。
 
-<font color='red'>InnoDB的行锁是针对索引加的锁（索引不能失效），不知针对记录加的锁，索引失效或者无索引的情况下会将行锁升级为表锁。</font>
+<font color='red'>InnoDB的行锁是针对索引加的锁（索引不能失效），不是针对记录加的锁，索引失效或者无索引的情况下会将行锁升级为表锁。</font>
 
 update尽量使用主键进行更新。

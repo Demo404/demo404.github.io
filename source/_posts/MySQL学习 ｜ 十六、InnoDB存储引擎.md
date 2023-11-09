@@ -89,7 +89,7 @@ CREATE TABLE xxx ... TABLESPACE tablespace_name;
 
 相关文件：#ib_xxxxx_0.dblwr、#ib_xxxxx_1.dblwr
 
-**Redo Log：**重做日志，用来实现事物的持久性。改日志文件由两部分组成：重做日志缓冲（redo log buffer）以及重做日志文件（redo log），前者是在内存中，后者在磁盘中。当事物提交之后会把所有的修改信息都存储在该日志中，用于在刷新脏页到磁盘时发生错误后恢复数据使用。
+**Redo Log：**重做日志，用来实现事物的持久性。该日志文件由两部分组成：重做日志缓冲（redo log buffer）以及重做日志文件（redo log），前者是在内存中，后者在磁盘中。当事物提交之后会把所有的修改信息都存储在该日志中，用于在刷新脏页到磁盘时发生错误后恢复数据使用。
 
 以循环方式写入重做日志文件，涉及两个文件：ib_logfile0、ib_logfile_1
 
