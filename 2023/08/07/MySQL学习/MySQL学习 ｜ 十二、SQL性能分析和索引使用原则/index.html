@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 百度站点验证 -->
+    <meta name="baidu-site-verification" content="codeva-7DNzXgb8XD" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="何进磊">
+    
+    <title>
+        
+            MySQL学习 ｜ 十二、SQL性能分析和索引使用原则 |
+        
+        何进磊的小窝
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.jpg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["后端攻城狮"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               何进磊的小窝
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107"
+                            >
+                                CHAT GPT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107">CHAT GPT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MySQL学习 ｜ 十二、SQL性能分析和索引使用原则</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">何进磊</span>
+                            
+                                <span class="author-label">后端攻城狮</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-08-07 07:37:58</span>
+        <span class="mobile">2023-08-07 07:37</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2025-11-12 10:04:00</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.4k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h4 id="一、查看SQL的执行频率"><a href="#一、查看SQL的执行频率" class="headerlink" title="一、查看SQL的执行频率"></a>一、查看SQL的执行频率</h4><p>通过SQL的执行频率可以确定当前数据库执行哪类操作比较多，然后做出对应的优化措施。</p>
+<p>通过如下命令可以查看当前数据库的INSERT、UPDATE、DELETE、SELECT等操作的执行频次。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SHOW GLOBAL STATUS LIKE &#x27;Com_______&#x27;<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-07%2007.47.21.png?e=1691366143&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:BnUqlCMw7NIDASAk6F2A-ie_nbc=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-07%2007.47.21.png?e=1691366143&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:BnUqlCMw7NIDASAk6F2A-ie_nbc="></p>
+</br>
+
+<h4 id="二、慢查询日志"><a href="#二、慢查询日志" class="headerlink" title="二、慢查询日志"></a>二、慢查询日志</h4><p>慢查询日志记录了所有执行时间超过指定参数（long_query_time，单位：秒，默认10秒）的所有SQL语句的日志。</p>
+<p>MySQL的慢查询日志默认没有开启，需要在MySQL的配置文件（&#x2F;etc&#x2F;my.cnf）中配置如下信息：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">开启MySQL的慢日志查询开关</span><br>slow_query_log=1<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置慢日志的查询时间，SQL语句执行时间超过指定的值(如下超过10秒则为慢查询)，则会视为慢查询，记录慢查询日志。</span><br>long_query_time=10<br></code></pre></td></tr></table></figure>
+
+<p>配置完毕以后需重启MySQL服务，慢日志信息记录在文件：<code>/var/lib/mysql/localhost-show.log</code>中。</p>
+<p>查询慢日志查询是否开启，如下命令：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;slow_query_log&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>输出Value值为：<code>ON</code> 则说明慢日志查询开启。</p>
+</br>
+
+<h4 id="三、show-profiles命令"><a href="#三、show-profiles命令" class="headerlink" title="三、show profiles命令"></a>三、show profiles命令</h4><p>在实际的业务中，有些SQL查询比较简单，但是查询占用的时间刚好小于慢日志记录设置的时间，导致这类慢SQL不能被捕捉到。</p>
+<p>show profiles 能够在做SQL优化时帮助我们了解时间都耗费到哪里去了。通过<code>have_profiling</code>参数，能够查看到当前MySQL是否支持profile操纵。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> @<span class="hljs-variable">@have_profiling</span>;<br></code></pre></td></tr></table></figure>
+
+<p>输出值为：<code>YES</code>则说明当前数据库支持profile。</p>
+<p>默认profile是关闭的，可以通过命令开启GLOBAL或者SESSION级别的profiling。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SET</span> [<span class="hljs-keyword">GLOBAL</span> <span class="hljs-operator">|</span> SESSION] profiling <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>profile相关的一些命令</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"># 查看每一条<span class="hljs-keyword">SQL</span>的耗时基本情况<br><span class="hljs-keyword">show</span> profiles;<br><br># 查看指定query的<span class="hljs-keyword">SQL</span>语句的各个阶段的耗时情况,query_id:上一步的id<br><span class="hljs-keyword">show</span> profile <span class="hljs-keyword">for</span> query [query_id];<br><br># 查看指定<span class="hljs-keyword">SQL</span>的CPU占用情况<br><span class="hljs-keyword">show</span> profile cpu <span class="hljs-keyword">for</span> query [query_id];<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="四、explain命令"><a href="#四、explain命令" class="headerlink" title="四、explain命令"></a>四、explain命令</h4><p><code>EXPLAIN</code>或者<code>DESC</code>命令用来获取MySQL是如何执行SELECT语句的信息，包括SELECT语句执行过程中表如何连接和连接顺序等信息。</p>
+<p><strong>语法</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs SQL"># 直接在<span class="hljs-keyword">select</span>语句前面加上关键字 explain<span class="hljs-operator">/</span><span class="hljs-keyword">desc</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件;<br></code></pre></td></tr></table></figure>
+
+<p>EXPLAIN展示的各个字段的含义：</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>查询的序列号，表示查询中执行select字句或者是操作表的顺序。（id越大越先被执行，id相同时按照从上往下的顺序执行查询）</td>
+</tr>
+<tr>
+<td>select_type</td>
+<td>表示select的类型，常见的取值有SIMPLE（简单表，即不使用表链接或者子查询）、PRIMARY（主查询，即外层查询）、UNION（UNION中的第二个或者后面的查询）、SUBQUERY（SELECT&#x2F;WHERE之后包含了子查询）等。</td>
+</tr>
+<tr>
+<td>type</td>
+<td>表示连接类型，性能由好到差为NULL、SYSTEM、CONST、EQ_REF、REF、RANGE、INDEX、ALL。</td>
+</tr>
+<tr>
+<td>possible_key</td>
+<td>显示可能用在这张表上的索引，一个或者多个。</td>
+</tr>
+<tr>
+<td>key</td>
+<td>实际使用的索引，没有则为NULL。</td>
+</tr>
+<tr>
+<td>key_length</td>
+<td>表示索引使用的字节数，该值为索引字段最大可能长度，并非实际使用长度，在不损失精度的情况下，长度越短越好。</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>MySQL认为必须要执行查询的行数，在InnoDB引擎中是一个估算值，可能并不总是准确的。</td>
+</tr>
+<tr>
+<td>filtered</td>
+<td>表示返回结果的行数占需要读取行数的百分比，filtered的值越大越好。</td>
+</tr>
+<tr>
+<td>extra</td>
+<td>额外信息</td>
+</tr>
+</tbody></table>
+<p>extra中显示的信息，MySQL版本不通则显示的不同。</p>
+<h4 id="五、索引的使用规则以及失效场景"><a href="#五、索引的使用规则以及失效场景" class="headerlink" title="五、索引的使用规则以及失效场景"></a>五、索引的使用规则以及失效场景</h4><p><strong>最左前缀法则：</strong>如果索引了多列（联合索引），要遵守最佳左前缀法则。最左前缀法则是指查询从索引的最左列开始，并且不跳过索引中的列。如果跳过了索引中的某一列，索引将部分失效（跳过列后方的字段索引失效）；</p>
+<blockquote>
+<p>where条件后面列的顺序可以和索引中定义的顺序不一致。</p>
+</blockquote>
+<p><strong>SQL提示：</strong>是优化数据库的一个重要手段，简单来说就是在SQL语句中加入一些人为的提示来达到优化操作的目的。</p>
+<blockquote>
+<p>use index;  告诉数据库你应该使用哪一个索引（建议使用）</p>
+<p>SELECT 字段列表 FROM 表名 use index(index_name) WHERE 条件;</p>
+</blockquote>
+<blockquote>
+<p>ignore index;  告诉数据库你不要使用哪一个索引</p>
+<p>SELECT 字段列表 FROM 表名 ignore index(index_name) WHERE 条件;</p>
+</blockquote>
+<blockquote>
+<p>force index;  告诉数据库你必须要使用哪一个索引（强制使用）</p>
+<p>SELECT 字段列表 FROM 表名 force index(index_name) WHERE 条件;</p>
+</blockquote>
+<p><strong>覆盖索引：</strong>尽量使用覆盖索引（查询使用了索引，并且查询的字段全部可以在索引中找到），避免使用SELECT *（极易出现回表查询）。</p>
+<ul>
+<li>现有如下表结构，分别对主键ID和字段name建立索引：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>NAME</th>
+<th>GENDER</th>
+<th>CREATEDATE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>Arm</td>
+<td>1</td>
+<td>2023-08-22</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lily</td>
+<td>1</td>
+<td>2023-08-01</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Rosy</td>
+<td>0</td>
+<td>2023-03-10</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Zoom</td>
+<td>1</td>
+<td>2023-11-09</td>
+</tr>
+</tbody></table>
+<ul>
+<li>聚集索引（id）：</li>
+</ul>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.33.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.33.png"></p>
+<ul>
+<li>辅助索引（name）：</li>
+</ul>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.56.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%BA%8C/%E6%88%AA%E5%B1%8F2023-08-21%2008.19.56.png"></p>
+<ul>
+<li>分别进行以下查询：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> tb_stu <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br><br>走聚集索引，一次就可查询出数据。<br><br><span class="hljs-keyword">SELECT</span> id, name <span class="hljs-keyword">FROM</span> tb_stu <span class="hljs-keyword">WHERE</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arm&#x27;</span>;<br><br>走辅助索引即可查询出需要的所有数据（覆盖索引）。<br><br><span class="hljs-keyword">SELECT</span> id, name, gender <span class="hljs-keyword">FROM</span> tb_stu <span class="hljs-keyword">WHERE</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Arm&#x27;</span>;<br><br>首先根据辅助索引查询，只能查询出name和id字段，然后再使用id字段去聚集索引中查询gender字段（回表查询）。<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>思考：</strong>一张表有四个字段（id, name, password, status），由于数据量较大需要对以下SQL进行优化，该如何进行才是最优方案？</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> id, name, password, status <span class="hljs-keyword">FROM</span> tb_user <span class="hljs-keyword">WHERE</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Tom&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><em>方案1:</em> 为字段name建立索引。</p>
+<p>如果只为name字段建立索引的话，查询回进行两次，首先走辅助索引查询出name和id，然后再使用主键索引根据id查询password和status字段，涉及到了回表操作。</p>
+<p><em>方案2:</em> 为字段name和password以及status字段建立索引。</p>
+<p>此时where条件会使用建立的索引（最佳左前缀），并且根据索引就能查询出需要的数据，不需要回表等操作，因此性能最高。</p>
+</blockquote>
+<p><strong>前缀索引：</strong>当字段类型为字符串（varchar，text）时，有时候需要索引很长的字符串（比如博客中的内容），只会让索引变得很大，查询时会浪费大量的磁盘IO，影响查询效率。此时可以只将字符串的一部分前缀建立索引，这样可以大大减少索引空间进而提示查询效率。</p>
+<p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> INDEX index_name <span class="hljs-keyword">ON</span> table_name(<span class="hljs-keyword">column</span>(n));	<span class="hljs-comment">-- n:前缀长度</span><br></code></pre></td></tr></table></figure>
+
+<p>如何决定前缀的长度：可以根据前缀的选择性来决定，而前缀的选择性是指不重复的索引值（基数）和数据总量的比值，选择性越高则查询效率越高，唯一索引的选择性为1，是最好的选择性，性能也是最高的。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql">选择行计算：<br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">count</span> (<span class="hljs-keyword">distinct</span> email)<span class="hljs-operator">/</span><span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> tb_user;	                <span class="hljs-comment">-- 1</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">count</span> (<span class="hljs-keyword">distinct</span> <span class="hljs-built_in">substring</span>(email,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>))<span class="hljs-operator">/</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> tb_user;	<span class="hljs-comment">-- 0.9876</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>范围查询：</strong>联合索引中，出现范围查询（&gt;, &lt;）时，范围查询右侧的索引将失效。</p>
+<blockquote>
+<p>大于等于, 小于等于 不会使得索引失效，因此在业务允许的情况下尽量使用大于等于代替大于，用小于等于代替小于。</p>
+</blockquote>
+<p><strong>索引列上运算：</strong>在索引列上进行计算操作将导致索引失效。</p>
+<p><strong>字符串不加引号：</strong>使用字符串列时不加引号会导致索引失效（隐式转换）。</p>
+<p><strong>模糊查询：</strong>如果仅是尾部进行模糊匹配索引不会失效，如果是头部进行模糊匹配则会失效。</p>
+<blockquote>
+<p>WHERE name like ‘%张三’；	索引失效</p>
+<p>WHERE name like ‘张三%’；	索引有效</p>
+</blockquote>
+<p><strong>OR连接的条件：</strong>用or分隔开的条件，如果or前面的条件中的列有索引，而后面的列中没有索引，那么涉及到的索引都不会生效。or前后的条件都有索引时会生效。</p>
+<p><strong>数据分布影响：</strong>如果MySQL评估使用索引比全表更慢时则不会使用索引。</p>
+<p>如果使用索引查出的数据量大于全表的数据量的1&#x2F;2，MySQL会使用全表扫描。</p>
+<blockquote>
+<p>对字段使用not null或者is not null时，MySQL也会评估是走索引还是全表扫描。</p>
+</blockquote>
+</br>
+
+<h4 id="六、索引的设计规则"><a href="#六、索引的设计规则" class="headerlink" title="六、索引的设计规则"></a>六、索引的设计规则</h4><ol>
+<li><p>针对数据量较大且查询比较频繁的表建立索引。</p>
+</li>
+<li><p>针对常作为查询条件（where）、排序（order）、分组（group by）操作的字段建立索引。</p>
+</li>
+<li><p>尽量选择区分度较大的列作为索引，尽量选择唯一索引，区分度越高，使用索引的效率越高。</p>
+</li>
+<li><p>如果是字符串类型的字段并且字段的长度较长，可以针对字段的特点建立前缀索引。</p>
+</li>
+<li><p>尽量使用联合索引，减少单列索引，查询时联合索引很多时候可以覆盖索引，节省存储空间，避免回表，提高查询效率。</p>
+</li>
+<li><p>控制索引的数量，索引并不是越多越好，索引越多，维护索引的成本就越高，增删改的效率也会被影响。</p>
+</li>
+<li><p>如果索引列不能存储NULL值，请在创建表时使用NOT NULL约束它。当优化器知道每列是否包含NULL值时，它可以更好的确定哪一个索引可最有效的用于查询。</p>
+</br></li>
+</ol>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">MySQL学习 ｜ 十二、SQL性能分析和索引使用原则</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">何进磊</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-08-07 07:37:58</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/08/07/MySQL学习/MySQL学习 ｜ 十二、SQL性能分析和索引使用原则/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/08/25/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%B8%89%E3%80%81SQL%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 十三、SQL性能优化</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 十一、数据库中的索引</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2021</span> -
+            
+            2025
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">何进磊</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    陇ICP备2021002930号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+
+</body>
+</html>

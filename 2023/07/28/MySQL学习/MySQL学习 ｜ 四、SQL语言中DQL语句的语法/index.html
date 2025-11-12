@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 百度站点验证 -->
+    <meta name="baidu-site-verification" content="codeva-7DNzXgb8XD" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="何进磊">
+    
+    <title>
+        
+            MySQL学习 ｜ 四、SQL语言中DQL语句的语法 |
+        
+        何进磊的小窝
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.jpg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["后端攻城狮"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               何进磊的小窝
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107"
+                            >
+                                CHAT GPT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107">CHAT GPT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MySQL学习 ｜ 四、SQL语言中DQL语句的语法</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">何进磊</span>
+                            
+                                <span class="author-label">后端攻城狮</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-07-28 13:53:52</span>
+        <span class="mobile">2023-07-28 13:53</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2025-11-12 10:04:00</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p><strong>DQL：数据查询语言，用来查询数据库中表里面的数据。</strong></p>
+<p>DQL语法‍‍‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT 字段列表 <br>FROM 表名 <br>WHERE 条件 <br>GROUP BY 分组 <br>HAVING 分组后的条件列表 <br>ORDER BY 排序字段列表 <br>LIMIT 分页参数;<br></code></pre></td></tr></table></figure>
+
+<p>数据查询语言的分类：</p>
+<p>&emsp;&emsp;&emsp;&emsp;基本查询‍‍</p>
+<p>&emsp;&emsp;&emsp;&emsp;条件查询（WHERE）</p>
+<p>&emsp;&emsp;&emsp;&emsp;聚合查询（COUNT、MAX、MIN、AVG、SUM）</p>
+<p>&emsp;&emsp;&emsp;&emsp;分组查询（GROUP BY）‍‍‍‍‍</p>
+<p>&emsp;&emsp;&emsp;&emsp;排序查询（ORDER BY）</p>
+<p>&emsp;&emsp;&emsp;&emsp;分页查询（LIMIT）</p>
+</br>
+
+<h4 id="一、DQL的基础查询"><a href="#一、DQL的基础查询" class="headerlink" title="一、DQL的基础查询"></a><strong>一、DQL的基础查询</strong></h4><p>1、查询返回多个字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT 字段1, 字段2, 字段n FROM 表名;<br>SELECT * FROM 表名;<br></code></pre></td></tr></table></figure>
+
+<p><code>select *</code> 可读性以及效率偏低，推荐 <code>select 字段</code> 的方式。</p>
+<p>2、设置别名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT 字段1 AS [别名1], 字段2 AS [别名2], ... 字段n AS [别名n] FROM 表名;<br></code></pre></td></tr></table></figure>
+
+<p>3、去除重复记录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT DISTINCT 字段名 FROM 表名；<br></code></pre></td></tr></table></figure>
+
+</br>
+
+<h4 id="二、DQL语句的条件查询‍‍"><a href="#二、DQL语句的条件查询‍‍" class="headerlink" title="二、DQL语句的条件查询‍‍"></a><strong>二、DQL语句的条件查询</strong>‍‍</h4><table>
+<thead>
+<tr>
+<th>比较运算符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&gt;, &gt;&#x3D;</td>
+<td>大于，大于等于</td>
+</tr>
+<tr>
+<td>&lt;, &lt;&#x3D;</td>
+<td>小于，小于等于</td>
+</tr>
+<tr>
+<td>&#x3D;</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;, !&#x3D;</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>BETWEEN…AND…</td>
+<td>在某个范围内（含最大值和最小值）</td>
+</tr>
+<tr>
+<td>IN(…)</td>
+<td>在IN之后的列表中</td>
+</tr>
+<tr>
+<td>LIKE 占位符</td>
+<td>模糊匹配</td>
+</tr>
+<tr>
+<td>IS NULL</td>
+<td>是NULL</td>
+</tr>
+</tbody></table>
+</br>
+
+<table>
+<thead>
+<tr>
+<th>逻辑运算符</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AND 或 &amp;&amp;</td>
+<td>并且（多个条件同时成立）</td>
+</tr>
+<tr>
+<td>OR 或 ||</td>
+<td>或者（多个条件满足一个）</td>
+</tr>
+<tr>
+<td>NOT 或 ！</td>
+<td>非，不是</td>
+</tr>
+</tbody></table>
+<p>1、查询年龄小于18的员工</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age &lt; 18;<br></code></pre></td></tr></table></figure>
+
+<p>2、查询年龄等于20的员工‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age = 20;<br></code></pre></td></tr></table></figure>
+
+<p>2、查询年龄不等于20的员工</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age != 20;SELECT * FROM 表名 WHERE age &lt;&gt; 20;<br></code></pre></td></tr></table></figure>
+
+<p>3、查询没有年龄的员工信息  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age is null;<br></code></pre></td></tr></table></figure>
+
+<p>4、查询有年龄的员工信息  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age is not null;<br></code></pre></td></tr></table></figure>
+
+<p>6、查询年龄在20到30的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age between 20 and 30;<br>SELECT * FROM 表名 WHERE age &gt;= 20 and and &lt;= 30;<br></code></pre></td></tr></table></figure>
+
+<p>7、查询年龄为20且性别为女的员工信息‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age = 20 and sex = &#x27;女&#x27;;<br></code></pre></td></tr></table></figure>
+
+<p>8、查询年龄为20或者30或者40的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE age = 20 or age = 30 or age = 40;<br>SELECT * FROM 表名 WHERE age in (20, 30, 40);<br></code></pre></td></tr></table></figure>
+
+<p>9、查询姓名为两个字的员工(一个下划线代表一个字符)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE name like &#x27;__&#x27;;<br></code></pre></td></tr></table></figure>
+
+<p>10、查询身份证号最后一位是X的员工信息‍‍‍‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM 表名 WHERE id_card like &#x27;%X&#x27;;<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="三、DQL语句的聚合函数‍‍‍‍‍‍"><a href="#三、DQL语句的聚合函数‍‍‍‍‍‍" class="headerlink" title="三、DQL语句的聚合函数‍‍‍‍‍‍"></a><strong>三、DQL语句的聚合函数‍‍‍‍‍‍</strong></h4><p><strong>聚合函数作用</strong>：将一列数据作为一个整体进行纵向计算。</p>
+<p><strong>注意</strong>：所有的null值不进行聚合函数计算。</p>
+<p>1、统计员工数量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT count(*) FROM 表名;SELECT count(字段名) FROM 表名;<br></code></pre></td></tr></table></figure>
+
+<p>2、统计平均值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT avg(字段名) FROM 表名;<br></code></pre></td></tr></table></figure>
+
+<p>3、查询最大值  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT max(字段名) FROM 表名;<br></code></pre></td></tr></table></figure>
+
+<p>4、查询最小值‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT min(字段名) FROM 表名;<br></code></pre></td></tr></table></figure>
+
+<p>5、查询某个字段的和</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT sum(字段名)  FROM 表名;<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="四、DQL语句的分组查询‍‍‍‍"><a href="#四、DQL语句的分组查询‍‍‍‍" class="headerlink" title="四、DQL语句的分组查询‍‍‍‍"></a><strong>四、DQL语句的分组查询‍‍‍‍</strong></h4><p><strong>语法</strong>：<code>SELECT 字段列表 FROM 表名 [WHERE 条件] GROUP BY [HAVING 分组后的过滤条件]‍‍‍‍‍</code></p>
+<p><strong>注意</strong>：</p>
+<p>&emsp;&emsp;&emsp;&emsp;1、分组查询的顺序为where -&gt; 聚合函数 -&gt; having‍‍‍‍‍‍‍‍‍‍‍‍</p>
+<p>&emsp;&emsp;&emsp;&emsp;2、分组之后查询的字段一般为聚合函数和分组字段，查询其他字段无意义。</p>
+<p>&emsp;&emsp;&emsp;&emsp;1、根据性别分组，查询男女员工的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT count(*) FROM 表名 GROUP BY gender;<br></code></pre></td></tr></table></figure>
+
+<p>2、根据性别分组，查询男女员工的平均年龄  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT avg(age) FROM 表名 GROUP BY gender;<br></code></pre></td></tr></table></figure>
+
+<p>3、查询年龄小于45的员工并且根据工作地址分组，获取员工数量大于3的工作地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT count(*) as address_count FROM 表名 <br>WHERE age &lt; 45 <br>GROUP BY work_address <br>HAVING address_count &gt;= 3;<br></code></pre></td></tr></table></figure>
+
+<h4 id="五、DQL语句的排序查询"><a href="#五、DQL语句的排序查询" class="headerlink" title="五、DQL语句的排序查询"></a><strong>五、DQL语句的排序查询</strong></h4><p>SQL语句中支持多个字段排序，排序方式有两种：<code>ASC</code>代表升序(默认值)，<code>DESC</code>代表降序。‍‍</p>
+<p>1、根据年龄对员工进行升序排列</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT 字段名 FROM 表名 ORDER BY age ASC;<br></code></pre></td></tr></table></figure>
+
+<p>2、根据入职时间进行降序排列  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT 字段名 FROM 表名 ORDER BY entry_date DESC;<br></code></pre></td></tr></table></figure>
+
+<p>3、根据年龄对员工进行升序排序，年龄相同根据入职时间将序排列‍‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT 字段名 FROM 表名 ORDER BY age ASC, entry_date DESC;<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="六、DQL语句的分页查询"><a href="#六、DQL语句的分页查询" class="headerlink" title="六、DQL语句的分页查询"></a><strong>六、DQL语句的分页查询</strong></h4><p><strong>语法</strong>：<code>SELECT 字段名 FROM 表名 LIMIT 起始索引,查询记录数;</code></p>
+<p><strong>注意</strong>：<code>LIMIT</code>为MySQL的方言，不同数据库分页有不同的实现。‍‍</p>
+<p>1、查询第一页的员工数据，每页展示10条</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM LIMIT 0,10;<br></code></pre></td></tr></table></figure>
+
+<p>2、查询第二页的员工数据，每页展示10条  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT * FROM LIMIT 10,10;<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="七、DQL语句的执行顺序‍‍‍‍"><a href="#七、DQL语句的执行顺序‍‍‍‍" class="headerlink" title="七、DQL语句的执行顺序‍‍‍‍"></a><strong>七、DQL语句的执行顺序‍‍‍‍</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">FROM -&gt; WHERE -&gt; GROUP BY -&gt; SELECT -&gt; ORDER BY -&gt; LIMIT<br></code></pre></td></tr></table></figure>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">MySQL学习 ｜ 四、SQL语言中DQL语句的语法</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">何进磊</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-07-28 13:53:52</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/07/28/MySQL学习/MySQL学习 ｜ 四、SQL语言中DQL语句的语法/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%BA%94%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%ADDCL%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 五、SQL语言中DCL语句的语法</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%B8%89%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%ADDML%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 三、SQL语言中DML语句的语法</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2021</span> -
+            
+            2025
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">何进磊</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    陇ICP备2021002930号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+
+</body>
+</html>

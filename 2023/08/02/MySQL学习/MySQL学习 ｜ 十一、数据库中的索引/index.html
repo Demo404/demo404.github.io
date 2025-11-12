@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 百度站点验证 -->
+    <meta name="baidu-site-verification" content="codeva-7DNzXgb8XD" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="何进磊">
+    
+    <title>
+        
+            MySQL学习 ｜ 十一、数据库中的索引 |
+        
+        何进磊的小窝
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.jpg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["后端攻城狮"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               何进磊的小窝
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107"
+                            >
+                                CHAT GPT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107">CHAT GPT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MySQL学习 ｜ 十一、数据库中的索引</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">何进磊</span>
+                            
+                                <span class="author-label">后端攻城狮</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-08-02 17:57:16</span>
+        <span class="mobile">2023-08-02 17:57</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2025-11-12 10:04:00</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h4 id="一、索引概述"><a href="#一、索引概述" class="headerlink" title="一、索引概述"></a><strong>一、索引概述</strong></h4><p>什么是索引‍‍?</p>
+<p>索引（index）是帮助MySQL高效获取数据的有序数据结构。在数据之外，数据库还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构之上实现高级查找算法，这种数据结构就是索引。‍‍‍‍‍‍‍‍</p>
+<p>索引的优点‍‍</p>
+<p>    1、提高了检索数据的效率。</p>
+<p>    2、通过索引列对数据进行排序，降低数据的排序成本。</p>
+<p>索引的缺点：</p>
+<p>    1、索引也要占用空间。</p>
+<p>    2、索引提高了查询效率的同时也降低了更新数据（INSERT、UPDATE…）的效率。‍‍‍‍‍‍</p>
+</br>
+
+<h4 id="二、索引的语法"><a href="#二、索引的语法" class="headerlink" title="二、索引的语法"></a><strong>二、索引的语法</strong></h4><p>创建索引</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">CREATE [UNIQUE | FULLTEXT | ] INDEX index_name ON table_name(index_col_name, ...);<br></code></pre></td></tr></table></figure>
+
+<p>查看索引</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SHOW INDEX FROM table_name;<br></code></pre></td></tr></table></figure>
+
+<p>删除索引</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">DROP INDEX index_name ON table_name;<br></code></pre></td></tr></table></figure>
+</br>
+
+<h4 id="三、索引结构"><a href="#三、索引结构" class="headerlink" title="三、索引结构"></a><strong>三、索引结构</strong></h4><p>MySQL的索引是在引擎层实现的，不同的存储引擎有不同的结构，主要包括下面几种：‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍</p>
+<table>
+<thead>
+<tr>
+<th>索引结构</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B+Tree索引</td>
+<td>最常见的索引类型，大部分引擎都支持B+树索引。</td>
+</tr>
+<tr>
+<td>Hash索引</td>
+<td>底层使用hash表实现的索引，不支持范围查询，只有精确匹配的列才有效。</td>
+</tr>
+<tr>
+<td>R-tree索引（空间索引）</td>
+<td>空间索引是MyISAM引擎的一个特殊索引类型，主要用于地理空间数据类型，通常使用较少。</td>
+</tr>
+<tr>
+<td>Full-text（全文索引）</td>
+<td>是一种通过建立倒排索引，快速匹配文档的方式。类似于Lucene，Solr，ES。</td>
+</tr>
+</tbody></table>
+<p>不同的索引在各个存储引擎中的支持情况：</p>
+<table>
+<thead>
+<tr>
+<th>索引</th>
+<th>InnoDB</th>
+<th>MyISAM</th>
+<th>Memory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B+Tree索引</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>Hash索引</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>R-tree索引</td>
+<td>不支持</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>Full-text（全文索引）</td>
+<td>5.6版本之后支持</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<p><strong>数据结构在线模拟：</strong><a class="link"   target="_blank" rel="noopener" href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html" >https://www.cs.usfca.edu/~galles/visualization/Algorithms.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>1、Btree和Btree索引</strong></p>
+<p>二叉树（大于祖先节点在右侧，小于祖先节点在左侧）</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.12.33.png?e=1690971241&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:zvz1Ze3lfMuSvZPYl5CHAl1Q6jU=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.12.33.png?e=1690971241&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:zvz1Ze3lfMuSvZPYl5CHAl1Q6jU="></p>
+<p>二叉树的缺点‍‍‍</p>
+<p>(1)、顺序插入时会形成一个链表，查询性能大大降低。<br>(2)、数据量较大的情况下层级较深，检索速度慢。‍‍‍‍‍‍‍‍‍‍‍</p>
+<p>红黑树（自平衡的二叉树）‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.14.20.png?e=1690976981&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZXZQnd1eaXR6kJSX20MKnQ_Zeqw=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.14.20.png?e=1690976981&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZXZQnd1eaXR6kJSX20MKnQ_Zeqw="></p>
+<p>红黑树的缺点：数据量较大的情况下层级较深，检索速度慢。</p>
+<p>B树（多路平衡二叉树）</p>
+<p>以一颗最大度数（max-degree）为5（5阶）的b-tree为例（每个节点最多可存储4个数据，5个指针）。‍‍</p>
+<p>树的度数指得是一个节点的子节点的个数。</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.16.06.png?e=1690971299&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:0YD1De4f43jUT2NTDMKXBNlL_mM=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.16.06.png?e=1690971299&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:0YD1De4f43jUT2NTDMKXBNlL_mM="></p>
+<p><strong>2、B+树和B+树索引‍‍‍‍</strong></p>
+<p>以一棵最大度数为4的b+为例‍‍‍‍‍</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.41.44.png?e=1690971335&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZikwIAYybTb3x5A6S59En-UllD0=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.41.44.png?e=1690971335&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZikwIAYybTb3x5A6S59En-UllD0="></p>
+<p>（1）、所有的数据都会在叶子结点出现</p>
+<p>（2）、叶子结点会形成一个单向列表</p>
+<p>MySQL中的B+树</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.47.32.png?e=1690971354&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:7eUqy6D6GrL7btSmKaoRg8MK7is=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.47.32.png?e=1690971354&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:7eUqy6D6GrL7btSmKaoRg8MK7is="></p>
+<p>MySQL数据结构对经典的B+树进行了优化。在原有B+树基础之上增加了一个只下过相邻叶子结点的链表指针，就形成了带有顺序指针的B+树，提高了区间访问的性能。  </p>
+<p><strong>3、hash索引</strong></p>
+<p>采用一定的hash算法，将键值转换成新的hash值，映射到对应到槽位上，然后存储到hash表中。‍‍‍‍‍‍‍‍</p>
+<p>如果两个（或多个）键值映射到同一个槽位上，他们就产生了hash冲突（也成hash碰撞），hash冲突可以通过链表来解决。‍</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.20.26.png?e=1690971377&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:v1z-LvCySNFPCDhlFZ5HQMOJwME=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.20.26.png?e=1690971377&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:v1z-LvCySNFPCDhlFZ5HQMOJwME=">‍</p>
+<p>Hash索引的特点：</p>
+<p>（1）、hash索引只能用于对等比较（&#x3D;，in），不支持范围查询（between，&lt;， &gt;）。‍‍</p>
+<p>（2）、无法利用索引完成排序。‍</p>
+<p>（3）、查询效率高，通常只需要一次检索即可（hash冲突时会去查询链表），效率高于B+tree索引。‍‍‍‍‍</p>
+<p><strong>思考：为什么InnoDB索引选择B+树而非二叉树或者红黑树或者B树？</strong>‍‍‍‍‍‍</p>
+<p>如果是顺序插入的话，二叉树会形成链表，导致树的层级较深，从而降低查找的效率，红黑树本质也是二叉树，也会有该问题。相对于二叉树，B+树层级更少，效率更高。‍‍‍‍‍‍‍</p>
+<p>B树非叶子结点也会存储数据，导致磁盘页上存放的数据变少，相同数据量的情况下，树的高度会增加，导致效率降低。B+树的叶子节点为双向链表，便于范围查询和排序。‍‍‍‍‍</p>
+<p>Hash索引不支持范围查询和排序。‍‍‍‍‍</p>
+  </br>
+
+<h4 id="四、索引分类"><a href="#四、索引分类" class="headerlink" title="四、索引分类"></a><strong>四、索引分类</strong></h4><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>含义</th>
+<th>特点</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主键索引</td>
+<td>针对于表中主键创建的索引</td>
+<td>默认自动创建，只有一个。</td>
+<td>PRIMARY</td>
+</tr>
+<tr>
+<td>唯一索引</td>
+<td>避免同一表中某数据列的值重复</td>
+<td>可以有多个</td>
+<td>UNIQUE</td>
+</tr>
+<tr>
+<td>常规索引</td>
+<td>快速定位特定数据</td>
+<td>可以有多个</td>
+<td></td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>全文索引查找的是文本中的关键词，而不是比较索引中的值。</td>
+<td>可以有多个</td>
+<td>FULLTEXT</td>
+</tr>
+</tbody></table>
+<p>在InnoDB存储引擎中，根据索引的存储形式，又可以分为以下两种：</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>含义</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>聚集索引（Clustered Index）</td>
+<td>将数据存储与索引放在了一起，索引结构的叶子结点保存了行数据。</td>
+<td>必须有，而且只有一个。</td>
+</tr>
+<tr>
+<td>二级索引（Secondary Index）</td>
+<td>将数据与索引分开存储，索引结构的叶子结点关联的是对应的主键。</td>
+<td>可以存在多个。</td>
+</tr>
+</tbody></table>
+<p>聚集索引的选取规则：‍‍‍‍‍‍‍‍</p>
+<p>    1、如果存在主键，主键就是聚集索引。</p>
+<p>    2、如果不存在主键，将使用第一个唯一索引作为聚集索引。</p>
+<p>    3、如果表没有主键或者没有合适的唯一索引，则InnoDB会自动生成一个rowid作为隐藏的聚集索引。‍‍</p>
+<p>聚集索引和二级索引的图示‍‍</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.45.32.png?e=1690977024&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Vgte0vIsqR5YDbA3D5hXTNPdkgI=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.45.32.png?e=1690977024&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Vgte0vIsqR5YDbA3D5hXTNPdkgI="></p>
+<p>聚集索引叶子节点存储的是每一行的数据（row），二级索引每一个叶子结点存储的是对应行的id。  </p>
+<p>聚集索引和二级索引在查询中的执行过程：‍‍‍</p>
+<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.48.12.png?e=1690977040&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:nuUA0rRnOG0v51-FSVc_2drmc8M=" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.48.12.png?e=1690977040&amp;token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:nuUA0rRnOG0v51-FSVc_2drmc8M="></p>
+<p>1、首先执行where条件后的查询，使用二级索引根据name拿到id。</p>
+<p>2、根据id到聚集索引查询行数据。（回表查询）</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">MySQL学习 ｜ 十一、数据库中的索引</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">何进磊</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-08-02 17:57:16</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/08/02/MySQL学习/MySQL学习 ｜ 十一、数据库中的索引/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/08/07/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%BA%8C%E3%80%81SQL%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%88%99/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 十二、SQL性能分析和索引使用原则</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 十、数据库中的存储引擎</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2021</span> -
+            
+            2025
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">何进磊</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    陇ICP备2021002930号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+
+</body>
+</html>

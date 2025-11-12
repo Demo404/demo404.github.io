@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 百度站点验证 -->
+    <meta name="baidu-site-verification" content="codeva-7DNzXgb8XD" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="何进磊">
+    
+    <title>
+        
+            MySQL学习 ｜ 九、SQL语言中的事物 |
+        
+        何进磊的小窝
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.jpg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["后端攻城狮"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               何进磊的小窝
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107"
+                            >
+                                CHAT GPT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107">CHAT GPT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MySQL学习 ｜ 九、SQL语言中的事物</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">何进磊</span>
+                            
+                                <span class="author-label">后端攻城狮</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-08-02 17:28:44</span>
+        <span class="mobile">2023-08-02 17:28</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2025-11-12 10:04:00</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>506 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h4 id="一、事物的简介‍‍"><a href="#一、事物的简介‍‍" class="headerlink" title="一、事物的简介‍‍"></a><strong>一、事物的简介</strong>‍‍</h4><p>1、什么是事物</p>
+<p>事物是一组操作的集合，它是一个不可分割的工作单元，事物会把所有的操作作为一个整体一起向系统提交或者撤销操作请求，即这些操作要么全部同时成功，要么同时失败。</p>
+<p>MySQL数据库是自动提交事物的。‍‍‍‍</p>
+  </br>
+
+<h4 id="二、事物的操作"><a href="#二、事物的操作" class="headerlink" title="二、事物的操作"></a><strong>二、事物的操作</strong></h4><p>1、查看、设置事物的提交方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT @@AUTOCOMMIT;<br><br>SET @@AUTOCOMMIT = 0;    (0: 手动提交；1:自动提交)<br></code></pre></td></tr></table></figure>
+
+<p>2、提交事物‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">COMMIT;<br></code></pre></td></tr></table></figure>
+
+
+<p>3、回滚事物</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ROLLBACK;<br></code></pre></td></tr></table></figure>
+
+<p>4、开启事物</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">START TRANSACTION;<br>或者<br>BEGIN;<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="三、事物的四大特性-ACID‍‍‍"><a href="#三、事物的四大特性-ACID‍‍‍" class="headerlink" title="三、事物的四大特性 ACID‍‍‍"></a><strong>三、事物的四大特性 ACID</strong>‍‍‍</h4><p>1、原子性（Atomicity）：事物是不可分割的最小操作单元，要么全部成功，要么全部失败。‍‍</p>
+<p>2、一致性（Consistency）：事物完成时，数据的总量保持不变，必须使所有的数据都保持一致的状态。‍</p>
+<p>3、隔离性（Isolation）：数据库提供的隔离机制，保证事物在不受外部并发操作影响的环境下独立运行（A事物的操作不会影响正在进行的B事物）。</p>
+<p>4、持久性（Durability）：事物一旦提交或者回滚，他对数据库中的改变都是永久的。</p>
+</br>
+
+<h4 id="四、并发事物产生的问题‍"><a href="#四、并发事物产生的问题‍" class="headerlink" title="四、并发事物产生的问题‍"></a><strong>四、并发事物产生的问题</strong>‍</h4><p>1、脏读：一个事物读取到了另一个事物没提交的数据。‍‍</p>
+<p>2、不可重复读：一条事物先后执行同样的SQL，但是两次读取的数据不同（同一行数据每次查询不同）。‍‍‍‍‍</p>
+<p>3、幻读：一个事物在执行查询时，每次查询到的数据行数不一致（某一行数据一会存在一会又不存在）。‍</p>
+</br>
+
+<h4 id="五、事物的隔离级别"><a href="#五、事物的隔离级别" class="headerlink" title="五、事物的隔离级别"></a><strong>五、事物的隔离级别</strong></h4><table>
+<thead>
+<tr>
+<th>隔离界别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read Uncommitted</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>Read Committed</td>
+<td>✖️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>Repeatable Read</td>
+<td>✖️</td>
+<td>✖️</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>Serializable</td>
+<td>✖️</td>
+<td>✖️</td>
+<td>✖️</td>
+</tr>
+</tbody></table>
+<p>事物的隔离界别越高，数据越安全，但是性能越低。</p>
+<p>查看事物的隔离级别</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT @@TRANSACTION_ISOLATION;<br></code></pre></td></tr></table></figure>
+
+<p>设置事物的隔离级别</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL &#123;READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZATION &#125;;<br></code></pre></td></tr></table></figure>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">MySQL学习 ｜ 九、SQL语言中的事物</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">何进磊</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-08-02 17:28:44</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/08/02/MySQL学习/MySQL学习 ｜ 九、SQL语言中的事物/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 十、数据库中的存储引擎</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%85%AB%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%A1%A8%E5%85%B3%E7%B3%BB/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 八、SQL语言中的多表关系</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2021</span> -
+            
+            2025
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">何进磊</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    陇ICP备2021002930号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+
+</body>
+</html>

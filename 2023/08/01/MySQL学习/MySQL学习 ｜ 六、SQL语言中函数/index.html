@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 百度站点验证 -->
+    <meta name="baidu-site-verification" content="codeva-7DNzXgb8XD" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="何进磊">
+    
+    <title>
+        
+            MySQL学习 ｜ 六、SQL语言中函数 |
+        
+        何进磊的小窝
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.jpg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":true},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["后端攻城狮"]},"word_count":{"enable":true,"wordcount":true,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               何进磊的小窝
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107"
+                            >
+                                CHAT GPT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107">CHAT GPT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MySQL学习 ｜ 六、SQL语言中函数</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">何进磊</span>
+                            
+                                <span class="author-label">后端攻城狮</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-08-01 21:03:24</span>
+        <span class="mobile">2023-08-01 21:03</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2025-11-12 10:04:00</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>872 字</span>
+        </span>
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p><strong>函数：</strong>是指一段可以直接被另一段程序调用的程序或代码。</p>
+<h4 id="一、字符串函数"><a href="#一、字符串函数" class="headerlink" title="一、字符串函数"></a><strong>一、字符串函数</strong></h4><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CONCAT(S1, S2, …, Sn)</td>
+<td align="center">字符串拼接，将字符串S1，S2…Sn拼接成一个新字符串</td>
+</tr>
+<tr>
+<td align="left">LOWER(str)</td>
+<td align="center">将字符串str全部转为小写</td>
+</tr>
+<tr>
+<td align="left">UPPER(str)</td>
+<td align="center">将字符串str全部转为大写</td>
+</tr>
+<tr>
+<td align="left">LPAD(str, n, pad)</td>
+<td align="center">左填充，用字符串pad对str的左边进行填充，达到n个字段的长度</td>
+</tr>
+<tr>
+<td align="left">RPAD(str, n, pad)</td>
+<td align="center">右填充，用字符串pad对str的右边进行填充，达到n个字段的长度</td>
+</tr>
+<tr>
+<td align="left">TRIM(str)</td>
+<td align="center">去掉字符串头部和尾部的空格</td>
+</tr>
+<tr>
+<td align="left">SUBSTRING(str, start, len)</td>
+<td align="center">返回字符串str从start开始起的len个长度的字符串</td>
+</tr>
+</tbody></table>
+<p>1、CONCAT函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT CONCAT(&#x27;hello&#x27;, &#x27;mysql&#x27;);<br>输出：hello mysql<br></code></pre></td></tr></table></figure>
+
+<p>2、LOWER函数‍‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT LOWER(&#x27;HELLO&#x27;);<br>输出：hello<br></code></pre></td></tr></table></figure>
+
+<p>3、UPPER函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT UPPER(&#x27;hello&#x27;);<br>输出：HELLO<br></code></pre></td></tr></table></figure>
+
+<p>4、LPAD函数  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT LPAD(&#x27;01&#x27;, 5, &#x27;-&#x27;);<br>输出：---01<br></code></pre></td></tr></table></figure>
+
+<p>5、RPAD函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT RPAD(&#x27;01&#x27;, 5, &#x27;-&#x27;);<br>输出：01---<br></code></pre></td></tr></table></figure>
+
+<p>6、TRIM函数（只能去除两端的空格，不能去除中间的空格）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT TRIM(&#x27; Hello Trim &#x27;);<br>输出：Hello Trim<br></code></pre></td></tr></table></figure>
+
+<p>7、SUBSTRING</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT SUBSTRING(&#x27;Hello MySQL&#x27;, 1, 5);<br>输出：Hello<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="二、数值函数‍‍"><a href="#二、数值函数‍‍" class="headerlink" title="二、数值函数‍‍"></a><strong>二、数值函数</strong>‍‍</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CEIL(x)</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>FLOOR(x)</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>MOD(x, y)</td>
+<td>返回x&#x2F;y的模</td>
+</tr>
+<tr>
+<td>RAND()</td>
+<td>返回0～1内的随机数</td>
+</tr>
+<tr>
+<td>ROUND(x, y)</td>
+<td>求参数x的四舍五入的值，保留y位小数</td>
+</tr>
+</tbody></table>
+<p>1、CEIL函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT CEIL(1.6);    <br>输出：1<br><br>SELECT CEIL(1.1);    <br>输出：1<br></code></pre></td></tr></table></figure>
+
+<p>2、FLOOR函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT FLOOR(1.6);    <br>输出：2<br><br>SELECT FLOOR(1.1);   <br>输出：2<br></code></pre></td></tr></table></figure>
+
+<p>3、MOD函数(求余数)  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT MOD(3, 4);   <br>输出：3<br><br>SELECT MOD(6, 4);    <br>输出：2<br></code></pre></td></tr></table></figure>
+
+<p>4、RAND  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT RAND();       <br>输出：0～1之间的随机数<br></code></pre></td></tr></table></figure>
+
+<p>5、ROUND‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT ROUND(2.34, 2);     <br>输出：2.34<br><br>SELECT ROUND(1.236, 2);    <br>输出：1.24<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="三、日期函数‍‍‍‍"><a href="#三、日期函数‍‍‍‍" class="headerlink" title="三、日期函数‍‍‍‍"></a><strong>三、日期函数</strong>‍‍‍‍</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CURDATE()</td>
+<td>返回当前日期</td>
+</tr>
+<tr>
+<td>CURTIME()</td>
+<td>返回当前时间</td>
+</tr>
+<tr>
+<td>NOW()</td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr>
+<td>YEAR(date)</td>
+<td>返回执行date的年份</td>
+</tr>
+<tr>
+<td>MONTH(date)</td>
+<td>返回指定date的月份</td>
+</tr>
+<tr>
+<td>DAY(date)</td>
+<td>返回指定date的日期</td>
+</tr>
+<tr>
+<td>DATE_ADD(date, INTERVAL expr type)</td>
+<td>返回一个日期&#x2F;时间加上一个时间间隔expr后的时间值</td>
+</tr>
+<tr>
+<td>DATEDIFF(date1, date2)</td>
+<td>返回起始时间date1和结束时间date2之间的天数</td>
+</tr>
+</tbody></table>
+<p>1、CURDATE</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT CURDATE();    <br>输出：2023-07-13<br></code></pre></td></tr></table></figure>
+
+<p>2、CURTIME</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT CURTIME();    <br>输出：08:37:26<br></code></pre></td></tr></table></figure>
+
+<p>3、NOW</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT NOW();        <br>输出：2023-07-13 08:38:33<br></code></pre></td></tr></table></figure>
+
+<p>4、YEAR、MONTH、DAY</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT YEAR(NOW());      <br>输出：2023<br><br>SELECT YEAR(MONTH());    <br>输出：7<br><br>SELECT YEAR(DAY());      <br>输出：13<br></code></pre></td></tr></table></figure>
+
+<p>5、DATE_ADD</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT DATE_ADD(NOW(), INTERVAL 70 DAY);<br>输出：2023-09-21 08:40:13<br><br>SELECT DATE_ADD(NOW(), INTERVAL -10 MONTH);<br>输出：2022-09-13 08:40:13<br></code></pre></td></tr></table></figure>
+
+<p>6、DATEDIFF(第一个时间减第二个时间)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT DATEDIFF(&#x27;2023-07-10&#x27;, &#x27;2023-07-01&#x27;);<br>输出：9<br></code></pre></td></tr></table></figure>
+
+  </br>
+
+<h4 id="四、流程控制函数‍‍"><a href="#四、流程控制函数‍‍" class="headerlink" title="四、流程控制函数‍‍"></a><strong>四、流程控制函数</strong>‍‍</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IF(value, t, f)</td>
+<td>如果value为true则返回t，否则返回f。</td>
+</tr>
+<tr>
+<td>IFNULL(val1, val2)</td>
+<td>如果val1不为空则返回val1，否则返回val2。</td>
+</tr>
+<tr>
+<td>CASE WHEN [val1] THEN [res1] … ELSE [default] END</td>
+<td>如果val1为true则返回res1…否则返回默认值default。</td>
+</tr>
+<tr>
+<td>CASE [expr] WHEN [val1] THEN [res1] … ELSE [default] END</td>
+<td>如果表达式expr的值为val1则返回res1…否则返回默认值default。</td>
+</tr>
+</tbody></table>
+<p>1、IF</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT IF(true, &#x27;OK&#x27;, &#x27;Error&#x27;);    <br>输出：OK<br></code></pre></td></tr></table></figure>
+
+<p>2、IFNULL‍</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT IFNULL(&#x27;OK&#x27;, &#x27;Default&#x27;);    <br>输出：OK<br><br>SELECT IFNULL(&#x27;&#x27;, &#x27;Default&#x27;);      <br>输出：<br><br>SELECT IFNULL(NULL, &#x27;Default&#x27;);    <br>输出：Default<br></code></pre></td></tr></table></figure>
+
+<p>3、CASE WHEN THEN ELSE END</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">查询员工姓名和城市，如果城市是上海和北京返回一线城市，其他返回二线城市<br><br>SELECT <br>	name, <br>	CASE work_address WHEN &#x27;上海&#x27; THEN &#x27;一线&#x27; WHEN &#x27;北京&#x27; THEN &#x27;一线&#x27; ELSE &#x27;二线&#x27; END <br>FROM worker;<br></code></pre></td></tr></table></figure>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">MySQL学习 ｜ 六、SQL语言中函数</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">何进磊</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-08-01 21:03:24</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/08/01/MySQL学习/MySQL学习 ｜ 六、SQL语言中函数/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/08/01/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%B8%83%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E7%BA%A6%E6%9D%9F/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 七、SQL语言中的约束</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%BA%94%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%ADDCL%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MySQL学习 ｜ 五、SQL语言中DCL语句的语法</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2021</span> -
+            
+            2025
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">何进磊</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+            <div class="icp-info info-item">
+                <a target="_blank" rel="nofollow"
+                   href="https://beian.miit.gov.cn"
+                >
+                    陇ICP备2021002930号
+                </a>
+            </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+
+</body>
+</html>
