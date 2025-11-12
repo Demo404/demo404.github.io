@@ -25,6 +25,10 @@ jobs:
           npm install -g hexo-cli  # 全局安装 Hexo CLI
           npm install  # 安装项目依赖
 
+      - name: Set timezone to Asia/Shanghai
+        run: |
+          sudo timedatectl set-timezone Asia/Shanghai  # 设置时区为上海时间
+
       - name: Generate static files
         run: |
           hexo clean  # 清除缓存
