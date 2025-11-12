@@ -11,7 +11,7 @@
     
     <title>
         
-            MySQL学习 ｜ 九、SQL语言中的事物 |
+            测试页面 |
         
         何进磊的小窝
     </title>
@@ -163,7 +163,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">MySQL学习 ｜ 九、SQL语言中的事物</span>
+                <span class="title-hover-animation">测试页面</span>
             </div>
 
             
@@ -185,37 +185,22 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-08-02 17:28:44</span>
-        <span class="mobile">2023-08-02 17:28</span>
+        <span class="pc">2025-11-12 11:28:16</span>
+        <span class="mobile">2025-11-12 11:28</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2025-11-12 11:26:29</span>
+        <span class="pc">2025-11-12 11:28:41</span>
     </span>
     
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/MySQL/">MySQL</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>506 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>161 字</span>
         </span>
     
     
@@ -234,77 +219,12 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h4 id="一、事物的简介‍‍"><a href="#一、事物的简介‍‍" class="headerlink" title="一、事物的简介‍‍"></a><strong>一、事物的简介</strong>‍‍</h4><p>1、什么是事物</p>
-<p>事物是一组操作的集合，它是一个不可分割的工作单元，事物会把所有的操作作为一个整体一起向系统提交或者撤销操作请求，即这些操作要么全部同时成功，要么同时失败。</p>
-<p>MySQL数据库是自动提交事物的。‍‍‍‍</p>
-  </br>
+                <h5 id="鸡爪处理过程"><a href="#鸡爪处理过程" class="headerlink" title="鸡爪处理过程"></a>鸡爪处理过程</h5><p>1、清水浸泡解冻 3H 去腥，水没过鸡爪，中间换水两到三次。</p>
+<p>2、清水 15 斤、葱段 100g、姜片 60g、盐 80g，加入去腥料包（配方在下面）大火烧开后小火煮 10min。</p>
+<p>3、10min 后转大火烧开下入鸡爪（开锅状态下下鸡爪），加入白醋（九度）40g，白酒 50g，汤开后转小火煮 5min，途中打掉浮沫。</p>
+<p>4、盖锅盖闷 5min，捞出先用凉水浸泡，再用冰水浸泡，保证 Q 弹。</p>
+<p>5、按照口味将调味料倒入鸡爪中，抓拌 5min 浸泡 5min，重复 3 次。密封冷藏 1 小时。</p>
 
-<h4 id="二、事物的操作"><a href="#二、事物的操作" class="headerlink" title="二、事物的操作"></a><strong>二、事物的操作</strong></h4><p>1、查看、设置事物的提交方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT @@AUTOCOMMIT;<br><br>SET @@AUTOCOMMIT = 0;    (0: 手动提交；1:自动提交)<br></code></pre></td></tr></table></figure>
-
-<p>2、提交事物‍</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">COMMIT;<br></code></pre></td></tr></table></figure>
-
-
-<p>3、回滚事物</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ROLLBACK;<br></code></pre></td></tr></table></figure>
-
-<p>4、开启事物</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">START TRANSACTION;<br>或者<br>BEGIN;<br></code></pre></td></tr></table></figure>
-
-  </br>
-
-<h4 id="三、事物的四大特性-ACID‍‍‍"><a href="#三、事物的四大特性-ACID‍‍‍" class="headerlink" title="三、事物的四大特性 ACID‍‍‍"></a><strong>三、事物的四大特性 ACID</strong>‍‍‍</h4><p>1、原子性（Atomicity）：事物是不可分割的最小操作单元，要么全部成功，要么全部失败。‍‍</p>
-<p>2、一致性（Consistency）：事物完成时，数据的总量保持不变，必须使所有的数据都保持一致的状态。‍</p>
-<p>3、隔离性（Isolation）：数据库提供的隔离机制，保证事物在不受外部并发操作影响的环境下独立运行（A事物的操作不会影响正在进行的B事物）。</p>
-<p>4、持久性（Durability）：事物一旦提交或者回滚，他对数据库中的改变都是永久的。</p>
-</br>
-
-<h4 id="四、并发事物产生的问题‍"><a href="#四、并发事物产生的问题‍" class="headerlink" title="四、并发事物产生的问题‍"></a><strong>四、并发事物产生的问题</strong>‍</h4><p>1、脏读：一个事物读取到了另一个事物没提交的数据。‍‍</p>
-<p>2、不可重复读：一条事物先后执行同样的SQL，但是两次读取的数据不同（同一行数据每次查询不同）。‍‍‍‍‍</p>
-<p>3、幻读：一个事物在执行查询时，每次查询到的数据行数不一致（某一行数据一会存在一会又不存在）。‍</p>
-</br>
-
-<h4 id="五、事物的隔离级别"><a href="#五、事物的隔离级别" class="headerlink" title="五、事物的隔离级别"></a><strong>五、事物的隔离级别</strong></h4><table>
-<thead>
-<tr>
-<th>隔离界别</th>
-<th>脏读</th>
-<th>不可重复读</th>
-<th>幻读</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Read Uncommitted</td>
-<td>✔️</td>
-<td>✔️</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>Read Committed</td>
-<td>✖️</td>
-<td>✔️</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>Repeatable Read</td>
-<td>✖️</td>
-<td>✖️</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>Serializable</td>
-<td>✖️</td>
-<td>✖️</td>
-<td>✖️</td>
-</tr>
-</tbody></table>
-<p>事物的隔离界别越高，数据越安全，但是性能越低。</p>
-<p>查看事物的隔离级别</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT @@TRANSACTION_ISOLATION;<br></code></pre></td></tr></table></figure>
-
-<p>设置事物的隔离级别</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL &#123;READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZATION &#125;;<br></code></pre></td></tr></table></figure>
             </div>
 
             
@@ -313,16 +233,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">MySQL学习 ｜ 九、SQL语言中的事物</span>
+            <span class="type">本文标题</span>：<span class="content">测试页面</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">何进磊</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-08-02 17:28:44</span>
+            <span class="type">创建时间</span>：<span class="content">2025-11-12 11:28:16</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/08/02/MySQL学习/MySQL学习 ｜ 九、SQL语言中的事物/</span>
+            <span class="type">本文链接</span>：<span class="content">2025/11/12/test/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -337,45 +257,18 @@
             
 
             
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
 
             
                 <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">MySQL学习 ｜ 十、数据库中的存储引擎</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
                     
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%85%AB%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%A1%A8%E5%85%B3%E7%B3%BB/"
+                               href="/2024/01/31/%E8%84%9A%E6%9C%AC/Jar%E5%8C%85%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2%E3%80%81%E9%87%8D%E5%90%AF%E8%84%9A%E6%9C%AC/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">MySQL学习 ｜ 八、SQL语言中的多表关系</span>
+                                <span class="post-nav-title-item">脚本/Jar包启动、停止、重启脚本</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
