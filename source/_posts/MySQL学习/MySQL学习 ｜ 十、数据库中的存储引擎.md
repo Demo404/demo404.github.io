@@ -5,7 +5,7 @@ tags: [数据库, MySQL]
 ---
 #### **一、MySQL的体系结构**‍
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png?e=1690969816&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:9KDlAtWfcLiGGCetaUnuygJLMyM=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png?e=1690969816&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:9KDlAtWfcLiGGCetaUnuygJLMyM=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/存储引擎.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/存储引擎.png)
 
 **连接层：**最上层是一些客户端和链接服务，主要完成一些连接处理、授权认证以及相关的安全方案。服务器也会为安全接入的每个客户端验证它所具备的操作权限。‍
 
@@ -29,7 +29,7 @@ tags: [数据库, MySQL]
 SHOW ENGINES;
 ```
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%AF%E6%8C%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png?e=1690969853&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:mEEDDkFMIKlNvxqUtxr-wdvm98g=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%AF%E6%8C%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png?e=1690969853&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:mEEDDkFMIKlNvxqUtxr-wdvm98g=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/数据库支持的存储引擎.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/数据库支持的存储引擎.png)
 
 3、查看已创建表的存储引擎‍
 
@@ -37,7 +37,7 @@ SHOW ENGINES;
 SHOW CREATE TABLE tb_wxuser;
 ```
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E8%A1%A8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png?e=1690969896&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:KNftZ9mpUuHLN6Bp4gbQaygE_SY=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E8%A1%A8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E.png?e=1690969896&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:KNftZ9mpUuHLN6Bp4gbQaygE_SY=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/表使用的存储引擎.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/表使用的存储引擎.png)
 
 </br>
 
@@ -61,7 +61,7 @@ XXX.ibd:XXX代表的是数据库的表名，InnoDB引擎的每张表都会对应
 
 InnoDB的存储结构：
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/InnoDB%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png?e=1690969936&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Y2AZUI0hEAE_srJXL-yr9olEJm0=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/InnoDB%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png?e=1690969936&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Y2AZUI0hEAE_srJXL-yr9olEJm0=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/InnoDB存储结构.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/InnoDB存储结构.png)
 
 **2、MyISAM存储引擎：**MyISAM是MySQL早期的默认存储引擎。
 
@@ -75,7 +75,7 @@ MyISAM引擎特点：
 
 MyISAM引擎的文件存储：
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/MyISAM%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png?e=1690970005&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:yfCm14dlhf13ed--rIzByxZpC_E=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/MyISAM%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png?e=1690970005&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:yfCm14dlhf13ed--rIzByxZpC_E=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/MyISAM文件存储结构.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/MyISAM文件存储结构.png)
 
 **3、Memory存储引擎：**Memory引擎的表数据存储在内存中，容易受到硬件问题、断电等的影响，因此只能将这些表作为临时表或者缓存使用。
 
@@ -91,4 +91,4 @@ xxx.sdi: 存储表结构信息
 
 **4、innoDB、MyISAM、Memory三者的区别**
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E4%B8%89%E7%A7%8D%E5%BC%95%E6%93%8E%E7%9A%84%E5%8C%BA%E5%88%AB.png?e=1690970020&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:nztTC5YX8Y7lmiUlMH9YCTGh1YM=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81/%E4%B8%89%E7%A7%8D%E5%BC%95%E6%93%8E%E7%9A%84%E5%8C%BA%E5%88%AB.png?e=1690970020&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:nztTC5YX8Y7lmiUlMH9YCTGh1YM=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/三种引擎的区别.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/三种引擎的区别.png)

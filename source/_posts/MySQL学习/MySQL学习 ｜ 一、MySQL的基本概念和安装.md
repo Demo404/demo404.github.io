@@ -43,23 +43,23 @@ SQL：操作关系型数据库的编程语言，定义了一套操作关系型�
 ###### 下载地址：
 https://dev.mysql.com/downloads/ 或者 https://www.mysql.com/ 依次如下点击进行下载。
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468324&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:iAo6vdQ_978yosZckapZZMKMy6w=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468324&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:iAo6vdQ_978yosZckapZZMKMy6w=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/下载按钮.jpeg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/下载按钮.jpeg)
 
 下拉页面找到download
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468265&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:kXAMjXltrPzX0yTS0c97bes7y6c=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E6%BB%91%E5%88%B0%E8%BF%99.jpg?e=1690468193&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:fp3gxEeu7DPFbCob1ObFXe_w5Wc=)
+![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468265&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:kXAMjXltrPzX0yTS0c97bes7y6c=](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/下滑到这.jpg)
 
 下载 MySQL Community Server 版（根据自身情况选择）
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E9%80%89%E6%8B%A9MySQL%E7%B1%BB%E5%9E%8B.jpg?e=1690468468&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:H-gIHLLX6QQEv5yeGduvN3aFC6g=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E9%80%89%E6%8B%A9MySQL%E7%B1%BB%E5%9E%8B.jpg?e=1690468468&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:H-gIHLLX6QQEv5yeGduvN3aFC6g=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择MySQL类型.jpg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择MySQL类型.jpg)
 
 然后选择对应的版本下载
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E9%80%89%E6%8B%A9%E7%89%88%E6%9C%AC.jpg?e=1690468489&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:KpcEtMAi5EEjDKoP9fvVAzClt8E=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E9%80%89%E6%8B%A9%E7%89%88%E6%9C%AC.jpg?e=1690468489&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:KpcEtMAi5EEjDKoP9fvVAzClt8E=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择版本.jpg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择版本.jpg)
 
 最后一步可以不用登录和注册。
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8D%E7%94%A8%E7%99%BB%E5%BD%95%E4%B8%8B%E8%BD%BD.jpg?e=1690468523&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:HPF2Xg3KkIkWZWhCeyN6fYPXNLI=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8D%E7%94%A8%E7%99%BB%E5%BD%95%E4%B8%8B%E8%BD%BD.jpg?e=1690468523&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:HPF2Xg3KkIkWZWhCeyN6fYPXNLI=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/不用登录下载.jpg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/不用登录下载.jpg)
 
 ###### 安装步骤：
 1、上传下载的安装包到服务器的 /usr/local 目录下‍
@@ -146,7 +146,7 @@ yum install -y libaio
 
 安装成功后再次执行第三条命令，出现如下界面则说明安装成功了，最后的初始化密码要记住。
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%EF%BC%8C%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81.png?e=1690468658&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:PoIVlSt2_-0a9EeMdCnSPJrKiK8=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%EF%BC%8C%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81.png?e=1690468658&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:PoIVlSt2_-0a9EeMdCnSPJrKiK8=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/安装成功，记住密码.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/安装成功，记住密码.png)
 
 7、添加MySQL到系统服务中并且建立软连接‍
 
@@ -168,7 +168,7 @@ ln -s /usr/local/mysql/bin/mysql /usr/bin
 
 执行 `service mysql start` 命令，出现 `Success`字样则说明启动成功。 
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F.png?e=1690468732&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Ms6BaytLZKZVv0bAERBPbn25YlE=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F.png?e=1690468732&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Ms6BaytLZKZVv0bAERBPbn25YlE=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/启动成功.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/启动成功.png)
 
 登录MySQL‍
 
@@ -207,4 +207,4 @@ FLUSH PRIVILEGES;    #配置生效
 &emsp;&emsp; - 1、使用表结构存储。格式统一便于维护。
 &emsp;&emsp; - 2、使用SQL语言操作，标准统一使用方便。
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-%E4%B8%A4%E8%A1%A8%E5%85%B3%E7%B3%BB.png?e=1690468783&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:t-Vii9Y0MNOAsNm4RBNWX7R9Qm8=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-%E4%B8%A4%E8%A1%A8%E5%85%B3%E7%B3%BB.png?e=1690468783&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:t-Vii9Y0MNOAsNm4RBNWX7R9Qm8=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/数据模型-两表关系.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/数据模型-两表关系.png)

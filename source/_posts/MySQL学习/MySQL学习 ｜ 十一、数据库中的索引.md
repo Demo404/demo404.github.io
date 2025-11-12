@@ -71,7 +71,7 @@ MySQL的索引是在引擎层实现的，不同的存储引擎有不同的结构
 
 二叉树（大于祖先节点在右侧，小于祖先节点在左侧）
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.12.33.png?e=1690971241&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:zvz1Ze3lfMuSvZPYl5CHAl1Q6jU=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.12.33.png?e=1690971241&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:zvz1Ze3lfMuSvZPYl5CHAl1Q6jU=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.12.33.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.12.33.png)
 
 二叉树的缺点‍‍‍
 
@@ -80,7 +80,7 @@ MySQL的索引是在引擎层实现的，不同的存储引擎有不同的结构
 
 红黑树（自平衡的二叉树）‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.14.20.png?e=1690976981&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZXZQnd1eaXR6kJSX20MKnQ_Zeqw=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.14.20.png?e=1690976981&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZXZQnd1eaXR6kJSX20MKnQ_Zeqw=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.14.20.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.14.20.png)
 
 红黑树的缺点：数据量较大的情况下层级较深，检索速度慢。
 
@@ -90,13 +90,13 @@ B树（多路平衡二叉树）
 
 树的度数指得是一个节点的子节点的个数。
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.16.06.png?e=1690971299&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:0YD1De4f43jUT2NTDMKXBNlL_mM=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.16.06.png?e=1690971299&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:0YD1De4f43jUT2NTDMKXBNlL_mM=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.16.06.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.16.06.png)
 
 **2、B+树和B+树索引‍‍‍‍**
 
 以一棵最大度数为4的b+为例‍‍‍‍‍
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.41.44.png?e=1690971335&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZikwIAYybTb3x5A6S59En-UllD0=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.41.44.png?e=1690971335&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:ZikwIAYybTb3x5A6S59En-UllD0=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.41.44.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.41.44.png)
 
 （1）、所有的数据都会在叶子结点出现
 
@@ -104,7 +104,7 @@ B树（多路平衡二叉树）
 
 MySQL中的B+树
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.47.32.png?e=1690971354&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:7eUqy6D6GrL7btSmKaoRg8MK7is=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-07-28%2008.47.32.png?e=1690971354&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:7eUqy6D6GrL7btSmKaoRg8MK7is=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.47.32.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-07-28_08.47.32.png)
 
 MySQL数据结构对经典的B+树进行了优化。在原有B+树基础之上增加了一个只下过相邻叶子结点的链表指针，就形成了带有顺序指针的B+树，提高了区间访问的性能。  
 
@@ -114,7 +114,7 @@ MySQL数据结构对经典的B+树进行了优化。在原有B+树基础之上�
 
 如果两个（或多个）键值映射到同一个槽位上，他们就产生了hash冲突（也成hash碰撞），hash冲突可以通过链表来解决。‍
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.20.26.png?e=1690971377&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:v1z-LvCySNFPCDhlFZ5HQMOJwME=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.20.26.png?e=1690971377&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:v1z-LvCySNFPCDhlFZ5HQMOJwME=)‍
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-08-01_08.20.26.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-08-01_08.20.26.png)‍
 
 Hash索引的特点：
 
@@ -160,13 +160,13 @@ Hash索引不支持范围查询和排序。‍‍‍‍‍
 
 聚集索引和二级索引的图示‍‍
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.45.32.png?e=1690977024&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Vgte0vIsqR5YDbA3D5hXTNPdkgI=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.45.32.png?e=1690977024&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:Vgte0vIsqR5YDbA3D5hXTNPdkgI=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-08-01_08.45.32.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-08-01_08.45.32.png)
 
 聚集索引叶子节点存储的是每一行的数据（row），二级索引每一个叶子结点存储的是对应行的id。  
 
 聚集索引和二级索引在查询中的执行过程：‍‍‍
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.48.12.png?e=1690977040&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:nuUA0rRnOG0v51-FSVc_2drmc8M=](http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E4%B8%80/%E6%88%AA%E5%B1%8F2023-08-01%2008.48.12.png?e=1690977040&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:nuUA0rRnOG0v51-FSVc_2drmc8M=)
+![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-08-01_08.48.12.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十一/截屏2023-08-01_08.48.12.png)
 
 1、首先执行where条件后的查询，使用二级索引根据name拿到id。
 
