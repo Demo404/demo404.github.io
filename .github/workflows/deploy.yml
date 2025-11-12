@@ -34,9 +34,9 @@ jobs:
           hexo clean  # 清除缓存
           hexo generate  # 生成静态文件
 
-      - name: Handle UpdateTime
-        run: |
-          git ls-files --directory source | while read path; do touch -d "$(git log -1 --format='@%ct' $path)" "$path"; done
+      #- name: Handle UpdateTime
+      #  run: |
+      #    git ls-files --directory source | while read path; do touch -d "$(git log -1 --format='@%ct' $path)" "$path"; done
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
