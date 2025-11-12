@@ -1,0 +1,38 @@
+name: Deploy Hexo Site
+
+on:
+  push:
+    branches:
+      - hexo  # 只有 hexo 分支的变更会触发部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 使用 Ubuntu 环境
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: hexo  # 确保检出的是 hexo 分支
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.13.0'  # 设置 Node.js 版本
+
+    - name: Install dependencies
+      run: |
+        npm install hexo-cli  # 安装 Hexo CLI
+        npm install  # 安装 Hexo 项目的依赖
+
+    - name: Generate static files
+      run: |
+        hexo clean  # 清除缓存
+        hexo generate  # 生成静态文件
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: master  # 目标分支是 master
+        folder: public  # 将 public 文件夹的内容推送到 master 分支
+        token: ${{ secrets.GITHUB_TOKEN }}  # GitHub 自动生成的 token
