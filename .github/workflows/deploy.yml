@@ -30,11 +30,6 @@ jobs:
           hexo clean  # 清除缓存
           hexo generate  # 生成静态文件
 
-      - name: Clean git repository
-        run: |
-          git reset --hard
-          git clean -fdx
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
