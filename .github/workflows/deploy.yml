@@ -40,4 +40,4 @@ jobs:
         with:
           branch: master # 目标分支是 master
           folder: public # 将 public 文件夹的内容推送到 master 分支
-          token: ${{ secrets.GITHUB_TOKEN }} # GitHub 自动生成的 token
+          token: ${{ secrets.ACCESS_TOKEN }} # GitHub 自动生成的 token
