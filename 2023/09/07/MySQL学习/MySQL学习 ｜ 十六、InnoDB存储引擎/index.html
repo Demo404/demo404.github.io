@@ -100,14 +100,6 @@
                             </a>
                         </li>
                     
-                        <li class="menu-item">
-                            <a class=""
-                               target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107"
-                            >
-                                CHAT GPT
-                            </a>
-                        </li>
-                    
                     
                 </ul>
             </div>
@@ -136,11 +128,6 @@
                 <li class="drawer-menu-item flex-center">
                     <a class=""
                        href="/tags">标签</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       target="_blank" rel="noopener" href="http://www.tanainaide.uk:1107">CHAT GPT</a>
                 </li>
             
         </ul>
@@ -191,7 +178,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2025-11-12 11:26:29</span>
+        <span class="pc">2023-09-07 07:54:09</span>
     </span>
     
     
@@ -234,7 +221,7 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h4 id="一、逻辑存储结构"><a href="#一、逻辑存储结构" class="headerlink" title="一、逻辑存储结构"></a>一、逻辑存储结构</h4><p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png"></p>
+                <h4 id="一、逻辑存储结构"><a href="#一、逻辑存储结构" class="headerlink" title="一、逻辑存储结构"></a>一、逻辑存储结构</h4><p><img src="http://jd.goudan.ltd:9000/hexo-blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84.png" alt="http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/InnoDB存储引擎逻辑结构.png"></p>
 <p><strong>表空间</strong>（idb文件），一个mysql实例可以对应多个表空间，用于存储记录、索引等数据。</p>
 <p><strong>段</strong>分为数据段、索引段、回滚段，InnoDB是索引组织表，数据段就是B+树的叶子结点，索引段为B+树的非叶子结点。段用来管理多个区（Extent）。</p>
 <p><strong>区</strong>，表空间的单元结构，每个区的大小为1M。默认情况下，InnoDB存储引擎页大小为16K，即一个区中有64个连续页。</p>
@@ -245,7 +232,7 @@
 </br>
 
 <h4 id="二、架构"><a href="#二、架构" class="headerlink" title="二、架构"></a>二、架构</h4><p>下面为InnoDB的架构图，其中左侧为内存结构，右侧为磁盘结构，中间为后台线程。</p>
-<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/InnoDB%E7%9A%84%E6%9E%B6%E6%9E%84.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/InnoDB%E7%9A%84%E6%9E%B6%E6%9E%84.png"></p>
+<p><img src="http://jd.goudan.ltd:9000/hexo-blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/InnoDB%E7%9A%84%E6%9E%B6%E6%9E%84.png" alt="http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/InnoDB的架构.png"></p>
 <h5 id="1、内存结构"><a href="#1、内存结构" class="headerlink" title="1、内存结构"></a>1、内存结构</h5><p><strong>Buffer Pool</strong>：缓冲池为主内存中的一个区域，里面可以缓存磁盘上经常操作的真实数据，在执行增删改查操作时，先操作缓冲池中的数据（如果缓冲池中没有则从磁盘加载数据并且缓存），然后再以一定的频率刷新到磁盘，从而减少磁盘IO，加快处理速度。</p>
 <p>缓冲池以Page为单位，底层采用链表数据结构管理Page。根据状态可以将Page分为三类：</p>
 <p>​	1、free page：空闲page，未被使用。</p>
@@ -283,7 +270,7 @@
 </li>
 </ol>
 <p>  执行命令<code>show engine innodb status;</code>可查看到相应的信息。</p>
-<p>  <img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/IO%E4%B8%AA%E6%95%B0%E6%9F%A5%E7%9C%8B.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/IO%E4%B8%AA%E6%95%B0%E6%9F%A5%E7%9C%8B.png"></p>
+<p>  <img src="http://jd.goudan.ltd:9000/hexo-blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/IO%E4%B8%AA%E6%95%B0%E6%9F%A5%E7%9C%8B.png" alt="http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/IO个数查看.png"></p>
 <table>
 <thead>
 <tr>
@@ -328,7 +315,7 @@
 <li>持久性（Durability）：事物一旦提交或回滚，他对数据库中的数据的改变是永久的。</li>
 </ul>
 <p><strong>redo log：</strong>重做日志，记录的是事物提交时数据页的物理修改，用来<font color="red">实现事物的持久性</font>。该日志文件由两部分组成：重做日志缓冲（redo log buffer）以及重做日志文件（redo log file），前者是在内存中，后者在磁盘上。当事物提交时会把所有的修改信息存储在该日志文件中，用于刷新脏页数据到磁盘时发生错误后进行数据恢复使用。</p>
-<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/Redo%E6%97%A5%E5%BF%97%E5%8E%9F%E7%90%86.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/Redo%E6%97%A5%E5%BF%97%E5%8E%9F%E7%90%86.png"></p>
+<p><img src="http://jd.goudan.ltd:9000/hexo-blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/Redo%E6%97%A5%E5%BF%97%E5%8E%9F%E7%90%86.png" alt="http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/Redo日志原理.png"></p>
 <p>客户端请求过来之后，首先去BufferPool中查找是否存在要操作的数据，如果不存在则从data文件中加载到BufferPool中然后操作，同时将操作记录到RedoLog Buffer中，RedoLog Buffer中的再写入到redo log file中，后台线程在刷新脏页数据到磁盘文件时如果出错可以借助redo log file进行恢复。</p>
 <p>为什么redo log buffer会直接写入磁盘而Buffer Pool时后台线程刷新到磁盘？因为redo log buffer写入到磁盘是顺序磁盘写入，效率要远高于Buffer Pool写入磁盘的随机磁盘写入。</p>
 <p>WAL(Write Ahead Log)预写日志，是数据库系统中常见的一种手段，用于保证数据操作的原子性和持久性。</p>
@@ -358,7 +345,7 @@
 <li>Serializable：快照读会退化为当前读。</li>
 </ul>
 <p><strong>MVCC：</strong>多版本并发控制。指的是维护数据库的多个版本，使得读写操作没有冲突，快照读为MySQL实现，MVCC提供了一个非阻塞读功能，MVCC的具体实现还的依赖于数据库中的三个隐式字段、undo log、readView。</p>
-<h5 id="2、隐藏字段"><a href="#2、隐藏字段" class="headerlink" title="2、隐藏字段"></a>2、隐藏字段</h5><p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/MySQL%E4%B8%AD%E7%9A%84%E9%9A%90%E8%97%8F%E5%AD%97%E6%AE%B5%E7%A4%BA%E4%BE%8B.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/MySQL%E4%B8%AD%E7%9A%84%E9%9A%90%E8%97%8F%E5%AD%97%E6%AE%B5%E7%A4%BA%E4%BE%8B.png"></p>
+<h5 id="2、隐藏字段"><a href="#2、隐藏字段" class="headerlink" title="2、隐藏字段"></a>2、隐藏字段</h5><p><img src="http://jd.goudan.ltd:9000/hexo-blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/MySQL%E4%B8%AD%E7%9A%84%E9%9A%90%E8%97%8F%E5%AD%97%E6%AE%B5%E7%A4%BA%E4%BE%8B.png" alt="http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/MySQL中的隐藏字段示例.png"></p>
 <p>创建用户表user时包含了三个字段，但实际在数据库中是6（或者5个）个字段。</p>
 <table>
 <thead>
@@ -383,7 +370,7 @@
 <blockquote>
 <p>在表空间文件中，使用命令 <code>idb2sdi xxx.idb</code> 命令可查看到完整的表信息，其中就包含DB_TRX_ID、DB_ROLL_PTR、DB_ROW_ID这三个字段。</p>
 </blockquote>
-<h5 id="3、undo-log"><a href="#3、undo-log" class="headerlink" title="3、undo log"></a>3、undo log</h5><p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/undo%20log%E7%89%88%E6%9C%AC%E9%93%BE.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/undo%20log%E7%89%88%E6%9C%AC%E9%93%BE.png"></p>
+<h5 id="3、undo-log"><a href="#3、undo-log" class="headerlink" title="3、undo log"></a>3、undo log</h5><p><img src="http://jd.goudan.ltd:9000/hexo-blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/undolog%E7%89%88%E6%9C%AC%E9%93%BE.png" alt="http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/undolog版本链.png"></p>
 <p>不同事物或相同事物对同一记录进行修改，会导致该纪录的undo log会生成一条记录版本链表，链表的头部是最新的旧记录，链表的尾部是最早的旧记录。</p>
 <h5 id="4、readView"><a href="#4、readView" class="headerlink" title="4、readView"></a>4、readView</h5><p>ReadVIew（读视图）是快照读SQL执行时MVCC读取数据的依据，记录并且维护系统当前活跃的事物（未提交）ID。</p>
 <p>ReadVIew中包含了四个核心字段</p>
@@ -411,7 +398,7 @@
 <td>ReadVIew创建者的事物ID</td>
 </tr>
 </tbody></table>
-<p><img src="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/%E6%95%B0%E6%8D%AE%E9%93%BE%E7%89%88%E6%9C%AC.png" alt="http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/%E6%95%B0%E6%8D%AE%E9%93%BE%E7%89%88%E6%9C%AC.png"></p>
+<p><img src="http://jd.goudan.ltd:9000/hexo-blog/MySQL%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%85%AD/%E6%95%B0%E6%8D%AE%E9%93%BE%E7%89%88%E6%9C%AC.png" alt="http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/数据链版本.png"></p>
 
             </div>
 
@@ -464,13 +451,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/09/27/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93/%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93%20%7C%20Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+                               href="/2023/11/09/%E5%81%9A%E9%A5%AD/%E5%87%A4%E7%88%AA%E5%88%B6%E4%BD%9C%E8%BF%87%E7%A8%8B/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">面试题库 | Java基础知识</span>
+                                <span class="post-nav-title-item">做饭 ｜ 柠檬风爪制作</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>

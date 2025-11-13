@@ -11,7 +11,7 @@
     
     <title>
         
-            MySQL学习 ｜ 九、SQL语言中的事物 |
+            Ubuntu 22.04上安装Nginx步骤 |
         
         何进磊的小窝
     </title>
@@ -150,7 +150,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">MySQL学习 ｜ 九、SQL语言中的事物</span>
+                <span class="title-hover-animation">Ubuntu 22.04上安装Nginx步骤</span>
             </div>
 
             
@@ -172,37 +172,22 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-08-02 17:28:44</span>
-        <span class="mobile">2023-08-02 17:28</span>
+        <span class="pc">2025-11-13 11:21:07</span>
+        <span class="mobile">2025-11-13 11:21</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-08-02 17:28:44</span>
+        <span class="pc">2025-11-13 11:21:07</span>
     </span>
     
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/MySQL/">MySQL</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>506 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>414 字</span>
         </span>
     
     
@@ -221,77 +206,110 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h4 id="一、事物的简介‍‍"><a href="#一、事物的简介‍‍" class="headerlink" title="一、事物的简介‍‍"></a><strong>一、事物的简介</strong>‍‍</h4><p>1、什么是事物</p>
-<p>事物是一组操作的集合，它是一个不可分割的工作单元，事物会把所有的操作作为一个整体一起向系统提交或者撤销操作请求，即这些操作要么全部同时成功，要么同时失败。</p>
-<p>MySQL数据库是自动提交事物的。‍‍‍‍</p>
-  </br>
-
-<h4 id="二、事物的操作"><a href="#二、事物的操作" class="headerlink" title="二、事物的操作"></a><strong>二、事物的操作</strong></h4><p>1、查看、设置事物的提交方式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT @@AUTOCOMMIT;<br><br>SET @@AUTOCOMMIT = 0;    (0: 手动提交；1:自动提交)<br></code></pre></td></tr></table></figure>
-
-<p>2、提交事物‍</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">COMMIT;<br></code></pre></td></tr></table></figure>
-
-
-<p>3、回滚事物</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">ROLLBACK;<br></code></pre></td></tr></table></figure>
-
-<p>4、开启事物</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">START TRANSACTION;<br>或者<br>BEGIN;<br></code></pre></td></tr></table></figure>
-
-  </br>
-
-<h4 id="三、事物的四大特性-ACID‍‍‍"><a href="#三、事物的四大特性-ACID‍‍‍" class="headerlink" title="三、事物的四大特性 ACID‍‍‍"></a><strong>三、事物的四大特性 ACID</strong>‍‍‍</h4><p>1、原子性（Atomicity）：事物是不可分割的最小操作单元，要么全部成功，要么全部失败。‍‍</p>
-<p>2、一致性（Consistency）：事物完成时，数据的总量保持不变，必须使所有的数据都保持一致的状态。‍</p>
-<p>3、隔离性（Isolation）：数据库提供的隔离机制，保证事物在不受外部并发操作影响的环境下独立运行（A事物的操作不会影响正在进行的B事物）。</p>
-<p>4、持久性（Durability）：事物一旦提交或者回滚，他对数据库中的改变都是永久的。</p>
-</br>
-
-<h4 id="四、并发事物产生的问题‍"><a href="#四、并发事物产生的问题‍" class="headerlink" title="四、并发事物产生的问题‍"></a><strong>四、并发事物产生的问题</strong>‍</h4><p>1、脏读：一个事物读取到了另一个事物没提交的数据。‍‍</p>
-<p>2、不可重复读：一条事物先后执行同样的SQL，但是两次读取的数据不同（同一行数据每次查询不同）。‍‍‍‍‍</p>
-<p>3、幻读：一个事物在执行查询时，每次查询到的数据行数不一致（某一行数据一会存在一会又不存在）。‍</p>
-</br>
-
-<h4 id="五、事物的隔离级别"><a href="#五、事物的隔离级别" class="headerlink" title="五、事物的隔离级别"></a><strong>五、事物的隔离级别</strong></h4><table>
+                <h4 id="使用apt安装nginx"><a href="#使用apt安装nginx" class="headerlink" title="使用apt安装nginx"></a>使用apt安装nginx</h4><p>使用命令 <code>apt list -a nginx</code> 查看有哪些版本可以安装。<br>如果不想指定版本，可以执行 <code>sudo apt install nginx -y</code> 直接安装最新的版本（本文以此为例）。</p>
+<h5 id="安装-🚀"><a href="#安装-🚀" class="headerlink" title="安装 🚀"></a>安装 🚀</h5><ul>
+<li><p>1、安装nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install nginx -y<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>2、执行以下命令检查 Nginx 是否成功安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nginx -v<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>3、成功会输出版本号</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nginx version: nginx/1.29.3<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="启动和设置开机自启-🍃"><a href="#启动和设置开机自启-🍃" class="headerlink" title="启动和设置开机自启 🍃"></a>启动和设置开机自启 🍃</h5><ul>
+<li><p>1、启动 Nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl start nginx<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>2、设置开机自启</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl enable nginx<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>3、查看运行状态</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl status nginx<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>如果看到输出中包含：<code>Active: active (running)</code> 说明 Nginx 已经启动成功。</p>
+<h5 id="配置防火墙-🧱"><a href="#配置防火墙-🧱" class="headerlink" title="配置防火墙 🧱"></a>配置防火墙 🧱</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo ufw allow &#x27;Nginx Full&#x27;<br>sudo ufw reload<br></code></pre></td></tr></table></figure>
+<p>使用 <code>sudo ufw status</code> 查看规则是否生效。</p>
+<h5 id="Nginx-默认文件结构说明-📖"><a href="#Nginx-默认文件结构说明-📖" class="headerlink" title="Nginx 默认文件结构说明 📖"></a>Nginx 默认文件结构说明 📖</h5><table>
 <thead>
 <tr>
-<th>隔离界别</th>
-<th>脏读</th>
-<th>不可重复读</th>
-<th>幻读</th>
+<th>目录&#x2F;文件</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Read Uncommitted</td>
-<td>✔️</td>
-<td>✔️</td>
-<td>✔️</td>
+<td><code>/etc/nginx/nginx.conf</code></td>
+<td>主配置文件</td>
 </tr>
 <tr>
-<td>Read Committed</td>
-<td>✖️</td>
-<td>✔️</td>
-<td>✔️</td>
+<td><code>/etc/nginx/sites-available/</code></td>
+<td>存放虚拟主机配置文件</td>
 </tr>
 <tr>
-<td>Repeatable Read</td>
-<td>✖️</td>
-<td>✖️</td>
-<td>✔️</td>
+<td><code>/etc/nginx/sites-enabled/</code></td>
+<td>指向启用的虚拟主机配置（通过软链接）</td>
 </tr>
 <tr>
-<td>Serializable</td>
-<td>✖️</td>
-<td>✖️</td>
-<td>✖️</td>
+<td><code>/var/www/html/</code></td>
+<td>默认网页目录（<code>index.html</code> 放这里）</td>
+</tr>
+<tr>
+<td><code>/var/log/nginx/access.log</code></td>
+<td>访问日志</td>
+</tr>
+<tr>
+<td><code>/var/log/nginx/error.log</code></td>
+<td>错误日志</td>
 </tr>
 </tbody></table>
-<p>事物的隔离界别越高，数据越安全，但是性能越低。</p>
-<p>查看事物的隔离级别</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SELECT @@TRANSACTION_ISOLATION;<br></code></pre></td></tr></table></figure>
+<h5 id="配置HTTPS（免费证书）✅"><a href="#配置HTTPS（免费证书）✅" class="headerlink" title="配置HTTPS（免费证书）✅"></a>配置HTTPS（免费证书）✅</h5><p>1️⃣ 安装 Certbot（Let’s Encrypt 工具）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install certbot python3-certbot-nginx -y<br></code></pre></td></tr></table></figure>
 
-<p>设置事物的隔离级别</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL &#123;READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZATION &#125;;<br></code></pre></td></tr></table></figure>
+<p>2️⃣ 获取证书：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo certbot --nginx -d blog.example.com<br></code></pre></td></tr></table></figure>
+<p>Certbot 会自动：</p>
+<ul>
+<li>验证域名；</li>
+<li>生成 SSL 证书；</li>
+<li>修改 Nginx 配置文件；</li>
+<li>自动配置 HTTPS。</li>
+</ul>
+<p>3️⃣ 自动续期检查：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo certbot renew --dry-run<br></code></pre></td></tr></table></figure>
+
+<h5 id="常用命令速查-👀"><a href="#常用命令速查-👀" class="headerlink" title="常用命令速查 👀"></a>常用命令速查 👀</h5><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动 Nginx</td>
+<td><code>sudo systemctl start nginx</code></td>
+</tr>
+<tr>
+<td>停止 Nginx</td>
+<td><code>sudo systemctl stop nginx</code></td>
+</tr>
+<tr>
+<td>重启 Nginx</td>
+<td><code>sudo systemctl restart nginx</code></td>
+</tr>
+<tr>
+<td>平滑加载配置</td>
+<td><code>sudo systemctl reload nginx</code></td>
+</tr>
+<tr>
+<td>检查配置文件</td>
+<td><code>sudo nginx -t</code></td>
+</tr>
+<tr>
+<td>查看日志</td>
+<td><code>sudo tail -f /var/log/nginx/access.log</code></td>
+</tr>
+</tbody></table>
+
             </div>
 
             
@@ -300,16 +318,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">MySQL学习 ｜ 九、SQL语言中的事物</span>
+            <span class="type">本文标题</span>：<span class="content">Ubuntu 22.04上安装Nginx步骤</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">何进磊</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2023-08-02 17:28:44</span>
+            <span class="type">创建时间</span>：<span class="content">2025-11-13 11:21:07</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2023/08/02/MySQL学习/MySQL学习 ｜ 九、SQL语言中的事物/</span>
+            <span class="type">本文链接</span>：<span class="content">2025/11/13/Ubuntu-22-04上安装Nginx步骤/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -324,45 +342,18 @@
             
 
             
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/MySQL/">#MySQL</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
 
             
                 <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">MySQL学习 ｜ 十、数据库中的存储引擎</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
                     
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%85%AB%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%A1%A8%E5%85%B3%E7%B3%BB/"
+                               href="/2025/11/12/%E5%B0%8F%E5%B7%A5%E5%85%B7/Mac%E4%B8%8A%E4%BD%BF%E7%94%A8cwebp%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">MySQL学习 ｜ 八、SQL语言中的多表关系</span>
+                                <span class="post-nav-title-item">Mac上使用cwebp压缩图片</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
