@@ -1,7 +1,7 @@
 ---
 title: Ubuntu 22.04上安装Nginx步骤
 date: 2025-11-13 11:21:07
-tags:
+tags: [中间件, Nginx]
 ---
 
 #### 使用apt安装nginx
