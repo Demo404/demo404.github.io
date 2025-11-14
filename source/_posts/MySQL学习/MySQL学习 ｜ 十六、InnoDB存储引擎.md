@@ -6,7 +6,7 @@ tags: [数据库, MySQL]
 
 #### 一、逻辑存储结构
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/InnoDB存储引擎逻辑结构.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/InnoDB存储引擎逻辑结构.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十六/InnoDB存储引擎逻辑结构.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十六/InnoDB存储引擎逻辑结构.png)
 
 **表空间**（idb文件），一个mysql实例可以对应多个表空间，用于存储记录、索引等数据。
 
@@ -28,7 +28,7 @@ tags: [数据库, MySQL]
 
 下面为InnoDB的架构图，其中左侧为内存结构，右侧为磁盘结构，中间为后台线程。
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/InnoDB的架构.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/InnoDB的架构.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十六/InnoDB的架构.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十六/InnoDB的架构.png)
 
 ##### 1、内存结构
 
@@ -101,7 +101,7 @@ CREATE TABLE xxx ... TABLESPACE tablespace_name;
 
   执行命令`show engine innodb status;`可查看到相应的信息。
 
-  ![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/IO个数查看.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/IO个数查看.png)
+  ![https://minio.goudan.ltd/hexo-blog/MySQL学习十六/IO个数查看.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十六/IO个数查看.png)
 
   | 线程类型             | 默认个数 | 职责                         |
   | -------------------- | -------- | ---------------------------- |
@@ -129,7 +129,7 @@ CREATE TABLE xxx ... TABLESPACE tablespace_name;
 
 **redo log：**重做日志，记录的是事物提交时数据页的物理修改，用来<font color="red">实现事物的持久性</font>。该日志文件由两部分组成：重做日志缓冲（redo log buffer）以及重做日志文件（redo log file），前者是在内存中，后者在磁盘上。当事物提交时会把所有的修改信息存储在该日志文件中，用于刷新脏页数据到磁盘时发生错误后进行数据恢复使用。
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/Redo日志原理.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/Redo日志原理.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十六/Redo日志原理.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十六/Redo日志原理.png)
 
 客户端请求过来之后，首先去BufferPool中查找是否存在要操作的数据，如果不存在则从data文件中加载到BufferPool中然后操作，同时将操作记录到RedoLog Buffer中，RedoLog Buffer中的再写入到redo log file中，后台线程在刷新脏页数据到磁盘文件时如果出错可以借助redo log file进行恢复。
 
@@ -179,7 +179,7 @@ undo log存储：undo log采用段的方式管理和记录，存储在rollback s
 
 ##### 2、隐藏字段
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/MySQL中的隐藏字段示例.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/MySQL中的隐藏字段示例.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十六/MySQL中的隐藏字段示例.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十六/MySQL中的隐藏字段示例.png)
 
 创建用户表user时包含了三个字段，但实际在数据库中是6（或者5个）个字段。
 
@@ -193,7 +193,7 @@ undo log存储：undo log采用段的方式管理和记录，存储在rollback s
 
 ##### 3、undo log
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/undolog版本链.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/undolog版本链.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十六/undolog版本链.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十六/undolog版本链.png)
 
 不同事物或相同事物对同一记录进行修改，会导致该纪录的undo log会生成一条记录版本链表，链表的头部是最新的旧记录，链表的尾部是最早的旧记录。
 
@@ -210,4 +210,4 @@ ReadVIew中包含了四个核心字段
 | max_trx_id     | 预分配事物ID，当前最大事物ID+1（因为事物ID是自增的） |
 | creator_trx_id | ReadVIew创建者的事物ID                               |
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/数据链版本.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十六/数据链版本.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十六/数据链版本.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十六/数据链版本.png)

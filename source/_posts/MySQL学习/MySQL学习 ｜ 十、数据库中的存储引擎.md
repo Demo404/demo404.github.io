@@ -5,7 +5,7 @@ tags: [数据库, MySQL]
 ---
 #### **一、MySQL的体系结构**‍
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/存储引擎.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/存储引擎.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十/存储引擎.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十/存储引擎.png)
 
 **连接层：**最上层是一些客户端和链接服务，主要完成一些连接处理、授权认证以及相关的安全方案。服务器也会为安全接入的每个客户端验证它所具备的操作权限。‍
 
@@ -29,7 +29,7 @@ tags: [数据库, MySQL]
 SHOW ENGINES;
 ```
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/数据库支持的存储引擎.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/数据库支持的存储引擎.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十/数据库支持的存储引擎.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十/数据库支持的存储引擎.png)
 
 3、查看已创建表的存储引擎‍
 
@@ -37,7 +37,7 @@ SHOW ENGINES;
 SHOW CREATE TABLE tb_wxuser;
 ```
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/表使用的存储引擎.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/表使用的存储引擎.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十/表使用的存储引擎.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十/表使用的存储引擎.png)
 
 </br>
 
@@ -61,7 +61,7 @@ XXX.ibd:XXX代表的是数据库的表名，InnoDB引擎的每张表都会对应
 
 InnoDB的存储结构：
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/InnoDB存储结构.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/InnoDB存储结构.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十/InnoDB存储结构.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十/InnoDB存储结构.png)
 
 **2、MyISAM存储引擎：**MyISAM是MySQL早期的默认存储引擎。
 
@@ -75,7 +75,7 @@ MyISAM引擎特点：
 
 MyISAM引擎的文件存储：
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/MyISAM文件存储结构.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/MyISAM文件存储结构.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十/MyISAM文件存储结构.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十/MyISAM文件存储结构.png)
 
 **3、Memory存储引擎：**Memory引擎的表数据存储在内存中，容易受到硬件问题、断电等的影响，因此只能将这些表作为临时表或者缓存使用。
 
@@ -91,4 +91,4 @@ xxx.sdi: 存储表结构信息
 
 **4、innoDB、MyISAM、Memory三者的区别**
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/三种引擎的区别.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十/三种引擎的区别.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十/三种引擎的区别.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十/三种引擎的区别.png)

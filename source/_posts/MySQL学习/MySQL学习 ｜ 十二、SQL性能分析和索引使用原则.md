@@ -14,7 +14,7 @@ tags: [数据库, MySQL]
 SHOW GLOBAL STATUS LIKE 'Com_______'
 ```
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十二/截屏2023-08-07_07.47.21.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十二/截屏2023-08-07_07.47.21.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十二/截屏2023-08-07_07.47.21.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十二/截屏2023-08-07_07.47.21.png)
 
 </br>
 
@@ -141,11 +141,11 @@ extra中显示的信息，MySQL版本不通则显示的不同。
 
 - 聚集索引（id）：
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.33.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.33.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.33.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.33.png)
 
 - 辅助索引（name）：
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.56.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.56.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.56.png](https://minio.goudan.ltd/hexo-blog/MySQL学习十二/截屏2023-08-21_08.19.56.png)
 
 - 分别进行以下查询：
 

@@ -43,23 +43,23 @@ SQL：操作关系型数据库的编程语言，定义了一套操作关系型�
 ###### 下载地址：
 https://dev.mysql.com/downloads/ 或者 https://www.mysql.com/ 依次如下点击进行下载。
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/下载按钮.jpeg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/下载按钮.jpeg)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习一/下载按钮.jpeg](https://minio.goudan.ltd/hexo-blog/MySQL学习一/下载按钮.jpeg)
 
 下拉页面找到download
 
-![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468265&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:kXAMjXltrPzX0yTS0c97bes7y6c=](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/下滑到这.jpg)
+![http://blog.cdn.goudan.ltd/Blog/MySQL%E5%AD%A6%E4%B9%A0%E4%B8%80/%E4%B8%8B%E8%BD%BD%E6%8C%89%E9%92%AE.jpeg?e=1690468265&token=w2Ck1K8J7F3OPBNX_GiYGMLReW7R0l5CDG2QUNPh:kXAMjXltrPzX0yTS0c97bes7y6c=](https://minio.goudan.ltd/hexo-blog/MySQL学习一/下滑到这.jpg)
 
 下载 MySQL Community Server 版（根据自身情况选择）
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择MySQL类型.jpg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择MySQL类型.jpg)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习一/选择MySQL类型.jpg](https://minio.goudan.ltd/hexo-blog/MySQL学习一/选择MySQL类型.jpg)
 
 然后选择对应的版本下载
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择版本.jpg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/选择版本.jpg)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习一/选择版本.jpg](https://minio.goudan.ltd/hexo-blog/MySQL学习一/选择版本.jpg)
 
 最后一步可以不用登录和注册。
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/不用登录下载.jpg](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/不用登录下载.jpg)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习一/不用登录下载.jpg](https://minio.goudan.ltd/hexo-blog/MySQL学习一/不用登录下载.jpg)
 
 ###### 安装步骤：
 1、上传下载的安装包到服务器的 /usr/local 目录下‍
@@ -146,7 +146,7 @@ yum install -y libaio
 
 安装成功后再次执行第三条命令，出现如下界面则说明安装成功了，最后的初始化密码要记住。
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/安装成功，记住密码.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/安装成功，记住密码.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习一/安装成功，记住密码.png](https://minio.goudan.ltd/hexo-blog/MySQL学习一/安装成功，记住密码.png)
 
 7、添加MySQL到系统服务中并且建立软连接‍
 
@@ -168,7 +168,7 @@ ln -s /usr/local/mysql/bin/mysql /usr/bin
 
 执行 `service mysql start` 命令，出现 `Success`字样则说明启动成功。 
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/启动成功.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/启动成功.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习一/启动成功.png](https://minio.goudan.ltd/hexo-blog/MySQL学习一/启动成功.png)
 
 登录MySQL‍
 
@@ -207,4 +207,4 @@ FLUSH PRIVILEGES;    #配置生效
 &emsp;&emsp; - 1、使用表结构存储。格式统一便于维护。
 &emsp;&emsp; - 2、使用SQL语言操作，标准统一使用方便。
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/数据模型-两表关系.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习一/数据模型-两表关系.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习一/数据模型-两表关系.png](https://minio.goudan.ltd/hexo-blog/MySQL学习一/数据模型-两表关系.png)

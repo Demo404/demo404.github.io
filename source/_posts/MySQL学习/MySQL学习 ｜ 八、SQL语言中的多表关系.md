@@ -12,7 +12,7 @@ tags: [数据库, MySQL]
 
 1、内连接（C表示部分）
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习七/交集.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习七/交集.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习七/交集.png](https://minio.goudan.ltd/hexo-blog/MySQL学习七/交集.png)
 
 ```
 隐式内连接    
@@ -24,7 +24,7 @@ SELECT * FROM 表1 [INNER]JOIN 表2 ON 条件;
 
 2、外连接
 
-![http://jd.goudan.ltd:9000/hexo-blog/MySQL学习七/交集.png](http://jd.goudan.ltd:9000/hexo-blog/MySQL学习七/交集.png)
+![https://minio.goudan.ltd/hexo-blog/MySQL学习七/交集.png](https://minio.goudan.ltd/hexo-blog/MySQL学习七/交集.png)
 
 左外连接表示A和C部分
 
