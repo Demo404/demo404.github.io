@@ -11,7 +11,7 @@
     
     <title>
         
-            Ubuntu 22.04上安装Nginx步骤 |
+            Ubuntu磁盘分区和挂载步骤 |
         
         何进磊的小窝
     </title>
@@ -150,7 +150,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Ubuntu 22.04上安装Nginx步骤</span>
+                <span class="title-hover-animation">Ubuntu磁盘分区和挂载步骤</span>
             </div>
 
             
@@ -172,22 +172,37 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2025-11-13 11:21:07</span>
-        <span class="mobile">2025-11-13 11:21</span>
+        <span class="pc">2025-11-18 10:07:04</span>
+        <span class="mobile">2025-11-18 10:07</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2025-11-13 11:21:07</span>
+        <span class="pc">2025-11-18 10:07:04</span>
     </span>
     
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Ubuntu/">Ubuntu</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>414 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>763 字</span>
         </span>
     
     
@@ -206,110 +221,53 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h4 id="使用apt安装nginx"><a href="#使用apt安装nginx" class="headerlink" title="使用apt安装nginx"></a>使用apt安装nginx</h4><p>使用命令 <code>apt list -a nginx</code> 查看有哪些版本可以安装。<br>如果不想指定版本，可以执行 <code>sudo apt install nginx -y</code> 直接安装最新的版本（本文以此为例）。</p>
-<h5 id="安装-🚀"><a href="#安装-🚀" class="headerlink" title="安装 🚀"></a>安装 🚀</h5><ul>
-<li><p>1、安装nginx</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install nginx -y<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>2、执行以下命令检查 Nginx 是否成功安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nginx -v<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>3、成功会输出版本号</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">nginx version: nginx/1.29.3<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h5 id="启动和设置开机自启-🍃"><a href="#启动和设置开机自启-🍃" class="headerlink" title="启动和设置开机自启 🍃"></a>启动和设置开机自启 🍃</h5><ul>
-<li><p>1、启动 Nginx</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl start nginx<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>2、设置开机自启</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl enable nginx<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>3、查看运行状态</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo systemctl status nginx<br></code></pre></td></tr></table></figure></li>
-</ul>
-<p>如果看到输出中包含：<code>Active: active (running)</code> 说明 Nginx 已经启动成功。</p>
-<h5 id="配置防火墙-🧱"><a href="#配置防火墙-🧱" class="headerlink" title="配置防火墙 🧱"></a>配置防火墙 🧱</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo ufw allow &#x27;Nginx Full&#x27;<br>sudo ufw reload<br></code></pre></td></tr></table></figure>
-<p>使用 <code>sudo ufw status</code> 查看规则是否生效。</p>
-<h5 id="Nginx-默认文件结构说明-📖"><a href="#Nginx-默认文件结构说明-📖" class="headerlink" title="Nginx 默认文件结构说明 📖"></a>Nginx 默认文件结构说明 📖</h5><table>
-<thead>
-<tr>
-<th>目录&#x2F;文件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>/etc/nginx/nginx.conf</code></td>
-<td>主配置文件</td>
-</tr>
-<tr>
-<td><code>/etc/nginx/sites-available/</code></td>
-<td>存放虚拟主机配置文件</td>
-</tr>
-<tr>
-<td><code>/etc/nginx/sites-enabled/</code></td>
-<td>指向启用的虚拟主机配置（通过软链接）</td>
-</tr>
-<tr>
-<td><code>/var/www/html/</code></td>
-<td>默认网页目录（<code>index.html</code> 放这里）</td>
-</tr>
-<tr>
-<td><code>/var/log/nginx/access.log</code></td>
-<td>访问日志</td>
-</tr>
-<tr>
-<td><code>/var/log/nginx/error.log</code></td>
-<td>错误日志</td>
-</tr>
-</tbody></table>
-<h5 id="配置HTTPS（免费证书）✅"><a href="#配置HTTPS（免费证书）✅" class="headerlink" title="配置HTTPS（免费证书）✅"></a>配置HTTPS（免费证书）✅</h5><p>1️⃣ 安装 Certbot（Let’s Encrypt 工具）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo apt install certbot python3-certbot-nginx -y<br></code></pre></td></tr></table></figure>
+                <h4 id="一、预检查（确认-LVM-空闲空间与卷组名）"><a href="#一、预检查（确认-LVM-空闲空间与卷组名）" class="headerlink" title="一、预检查（确认 LVM 空闲空间与卷组名）"></a>一、预检查（确认 LVM 空闲空间与卷组名）</h4><p>先看看当前 LVM 信息，确认可以划出足够的容量：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo pvs        # 查看物理卷（PV）<br>sudo vgs        # 查看卷组（VG）及可用空间（VG Free）<br>sudo lvs        # 查看现有逻辑卷（LV）<br></code></pre></td></tr></table></figure>
 
-<p>2️⃣ 获取证书：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo certbot --nginx -d blog.example.com<br></code></pre></td></tr></table></figure>
-<p>Certbot 会自动：</p>
+<p>期望看到 ubuntu-vg（或类似名）有大约剩余 ~9.9T 的空闲空间（VG Free）。示例里面要关注的字段：VG 名称（这里例子是 ubuntu-vg）与 VG Free（必须 &gt;&#x3D; 9T）。</p>
+<h4 id="二、创建逻辑卷（9T）"><a href="#二、创建逻辑卷（9T）" class="headerlink" title="二、创建逻辑卷（9T）"></a>二、创建逻辑卷（9T）</h4><p>将 9T 从卷组里分配到新的 LV（这里 LV 名称用 minio，可以自定义）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo lvcreate -n minio -L 9T ubuntu-vg<br></code></pre></td></tr></table></figure>
+<p>说明：</p>
 <ul>
-<li>验证域名；</li>
-<li>生成 SSL 证书；</li>
-<li>修改 Nginx 配置文件；</li>
-<li>自动配置 HTTPS。</li>
+<li>-n minio 是 LV 名称 &#x2F;dev&#x2F;ubuntu-vg&#x2F;minio</li>
+<li>-L 9T 分配 9 TB（注意 T 为 Tebibyte 还是 TB，LVM 默认是 TiB）</li>
+<li>ubuntu-vg 是示例卷组名，若你 vgs 看到不同名请替换为真实的 VG 名称</li>
 </ul>
-<p>3️⃣ 自动续期检查：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo certbot renew --dry-run<br></code></pre></td></tr></table></figure>
+<p>创建成功后确认：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo lvs -o+devices<br># 或<br>sudo lvdisplay /dev/ubuntu-vg/minio<br></code></pre></td></tr></table></figure>
 
-<h5 id="常用命令速查-👀"><a href="#常用命令速查-👀" class="headerlink" title="常用命令速查 👀"></a>常用命令速查 👀</h5><table>
-<thead>
-<tr>
-<th>操作</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>启动 Nginx</td>
-<td><code>sudo systemctl start nginx</code></td>
-</tr>
-<tr>
-<td>停止 Nginx</td>
-<td><code>sudo systemctl stop nginx</code></td>
-</tr>
-<tr>
-<td>重启 Nginx</td>
-<td><code>sudo systemctl restart nginx</code></td>
-</tr>
-<tr>
-<td>平滑加载配置</td>
-<td><code>sudo systemctl reload nginx</code></td>
-</tr>
-<tr>
-<td>检查配置文件</td>
-<td><code>sudo nginx -t</code></td>
-</tr>
-<tr>
-<td>查看日志</td>
-<td><code>sudo tail -f /var/log/nginx/access.log</code></td>
-</tr>
-</tbody></table>
+<h4 id="三、格式化为-XFS（推荐-XFS-用于大文件-对象存储）"><a href="#三、格式化为-XFS（推荐-XFS-用于大文件-对象存储）" class="headerlink" title="三、格式化为 XFS（推荐 XFS 用于大文件&#x2F;对象存储）"></a>三、格式化为 XFS（推荐 XFS 用于大文件&#x2F;对象存储）</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo mkfs.xfs -f /dev/ubuntu-vg/minio<br></code></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>-f 强制格式化（如果是新创建 LV 通常不必要，但保险写上）</li>
+<li>XFS 对大容量&#x2F;并发写入表现好，MinIO 推荐 XFS（或 ext4 也行）</li>
+</ul>
+<h4 id="四、创建挂载点并挂载（临时挂载验证）"><a href="#四、创建挂载点并挂载（临时挂载验证）" class="headerlink" title="四、创建挂载点并挂载（临时挂载验证）"></a>四、创建挂载点并挂载（临时挂载验证）</h4><p>创建目录并挂载：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo mkdir -p /data<br>sudo mount /dev/ubuntu-vg/minio /data<br></code></pre></td></tr></table></figure>
+<p>检查挂载：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">df -hT /data<br># 或<br>lsblk -f<br></code></pre></td></tr></table></figure>
+<p>应看到 &#x2F;dev&#x2F;mapper&#x2F;ubuntu–vg-minio 已挂载到 &#x2F;data，文件系统类型 xfs，容量约 9T。</p>
+<h4 id="五、设置合适的挂载选项并写入-etc-fstab（自动挂载且优化）"><a href="#五、设置合适的挂载选项并写入-etc-fstab（自动挂载且优化）" class="headerlink" title="五、设置合适的挂载选项并写入 &#x2F;etc&#x2F;fstab（自动挂载且优化）"></a>五、设置合适的挂载选项并写入 &#x2F;etc&#x2F;fstab（自动挂载且优化）</h4><p>建议使用 XFS 常用选项：noatime,nodiratime,attr2,inode64。把设备用 UUID 写入 fstab 更稳妥：<br>先获取 &#x2F;dev 的 UUID：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo blkid /dev/ubuntu-vg/minio<br></code></pre></td></tr></table></figure>
+<p>复制 UUID&#x3D;”…” 部分，然后编辑 &#x2F;etc&#x2F;fstab（用 root 权限）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo cp /etc/fstab /etc/fstab.bak    # 备份 fstab<br>sudo vi /etc/fstab<br></code></pre></td></tr></table></figure>
+<p>添加一行（用你上一步得到的 UUID:71800ad3-9c32-45f2-8915-92888db5b1fe 替换 <YOUR-UUID>；如果不想用 UUID，也可用设备路径 &#x2F;dev&#x2F;ubuntu-vg&#x2F;minio）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">UUID=&lt;YOUR-UUID&gt;  /data  xfs  defaults,noatime,nodiratime,attr2,inode64  0  2<br></code></pre></td></tr></table></figure>
+<p>保存后测试 fstab 无误并重新挂载（先卸载再 mount -a）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo umount /data<br>sudo mount -a<br>mount | grep &#x27; /data &#x27;<br></code></pre></td></tr></table></figure>
+<p>如果 mount -a 没报错，说明写入成功。</p>
+<h4 id="六、设定目录权限（给-MinIO-或其他服务用）"><a href="#六、设定目录权限（给-MinIO-或其他服务用）" class="headerlink" title="六、设定目录权限（给 MinIO 或其他服务用）"></a>六、设定目录权限（给 MinIO 或其他服务用）</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo useradd -r -s /sbin/nologin minio || true<br>sudo chown -R minio:minio /data<br>sudo chmod 750 /data<br></code></pre></td></tr></table></figure>
+<ul>
+<li>说明：如果已经有 minio 用户就不需要创建 useradd（|| true 保证已存在不会报错）。</li>
+</ul>
+<h4 id="七、验证空间与权限"><a href="#七、验证空间与权限" class="headerlink" title="七、验证空间与权限"></a>七、验证空间与权限</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">df -h /data<br>sudo ls -ld /data<br>sudo ls -la /data<br>sudo getfattr -d -m - /data   # optional, 查看 xfs 属性<br></code></pre></td></tr></table></figure>
 
+<h4 id="八、如果将来想扩容或缩小"><a href="#八、如果将来想扩容或缩小" class="headerlink" title="八、如果将来想扩容或缩小"></a>八、如果将来想扩容或缩小</h4><ul>
+<li>扩容：如果 VG 还有空闲空间，可用 lvextend -L +XG &#x2F;dev&#x2F;ubuntu-vg&#x2F;minio 然后 xfs_growfs &#x2F;data 在线扩容（XFS 支持在线扩展）。</li>
+<li>缩小：XFS 不支持在线缩小，缩小比较复杂，需备份、重建文件系统或转换为 ext4 并小心操作。</li>
+</ul>
+<p>示例扩容命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"># 假设还剩余 1T 空间，扩展 1T<br>sudo lvextend -L +1T /dev/ubuntu-vg/minio<br>sudo xfs_growfs /data<br>df -h /data<br></code></pre></td></tr></table></figure>
             </div>
 
             
@@ -318,16 +276,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">Ubuntu 22.04上安装Nginx步骤</span>
+            <span class="type">本文标题</span>：<span class="content">Ubuntu磁盘分区和挂载步骤</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">何进磊</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2025-11-13 11:21:07</span>
+            <span class="type">创建时间</span>：<span class="content">2025-11-18 10:07:04</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2025/11/13/Ubuntu-22-04上安装Nginx步骤/</span>
+            <span class="type">本文链接</span>：<span class="content">2025/11/18/中间件/Ubuntu磁盘分区和挂载步骤/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -342,6 +300,18 @@
             
 
             
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">#操作系统</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Ubuntu/">#Ubuntu</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
 
             
                 <div class="article-nav">
@@ -350,10 +320,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2025/11/12/%E5%B0%8F%E5%B7%A5%E5%85%B7/Mac%E4%B8%8A%E4%BD%BF%E7%94%A8cwebp%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87/"
+                               href="/2025/11/18/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ubuntu%E6%96%B0%E8%A3%85%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9root%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Mac上使用cwebp压缩图片</span>
+                                <span class="post-nav-title-item">Ubuntu 22.04 新装的系统如何修改root用户密码</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">

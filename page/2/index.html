@@ -151,6 +151,110 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2023/08/25/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%B8%89%E3%80%81SQL%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+                        MySQL学习 ｜ 十三、SQL性能优化
+                    </a>
+                </h3>
+
+                <div class="home-article-content keep-markdown-body">
+                    
+                        一、插入数据优化批量插入单条数据频繁的插入会存在大量的IO和不停的与数据库建立连接。批量插入的数据建议在500～1000条，更多的话建议使用多个批量插入。手动提交事物MySQL默认的是自动提交事物，多条插入语句时会频繁的开启、提交事物。
+
+start...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span>
+            <i class="fas fa-history"></i>&nbsp;
+            <span class="home-article-date" data-updated="Fri Aug 25 2023 15:11:23 GMT+0800">
+                2023-08-25
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a class="read-more" href="/2023/08/25/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%B8%89%E3%80%81SQL%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/08/07/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%BA%8C%E3%80%81SQL%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%88%99/">
+                        MySQL学习 ｜ 十二、SQL性能分析和索引使用原则
+                    </a>
+                </h3>
+
+                <div class="home-article-content keep-markdown-body">
+                    
+                        一、查看SQL的执行频率通过SQL的执行频率可以确定当前数据库执行哪类操作比较多，然后做出对应的优化措施。
+通过如下命令可以查看当前数据库的INSERT、UPDATE、DELETE、SELECT等操作的执行频次。
+SHOW GLOBAL STATUS...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span>
+            <i class="fas fa-history"></i>&nbsp;
+            <span class="home-article-date" data-updated="Mon Aug 07 2023 07:37:58 GMT+0800">
+                2023-08-07
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a class="read-more" href="/2023/08/07/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%BA%8C%E3%80%81SQL%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%92%8C%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%88%99/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2023/08/02/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%8D%81%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E7%B4%A2%E5%BC%95/">
                         MySQL学习 ｜ 十一、数据库中的索引
                     </a>
@@ -597,115 +701,6 @@ SELECT 字段列表 FROM 表名 WHERE 条件 GROUP BY 分组 HAVING 分组后的
     </div>
 
     <a class="read-more" href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E5%9B%9B%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%ADDQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%B8%89%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%ADDML%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/">
-                        MySQL学习 ｜ 三、SQL语言中DML语句的语法
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        DML：数据操作语言，用来对数据库表中的数据进行增删改操作。
-
-
-添加语句（INSERT）
-给指定字段添加数据：
-INSERT INTO 表名(字段1, 字段2) VALUES(值1, 值2);
-
-给所有的字段添加数据：‍‍‍‍
-INSERT INT...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri Jul 28 2023 13:49:34 GMT+0800">
-                2023-07-28
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/MySQL/">MySQL</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a class="read-more" href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%B8%89%E3%80%81SQL%E8%AF%AD%E8%A8%80%E4%B8%ADDML%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%BA%8C%E3%80%81SQL%E5%88%86%E7%B1%BB%E4%BB%A5%E5%8F%8ADDL%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/">
-                        MySQL学习 ｜ 二、SQL分类以及DDL语句的语法
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        一、SQL的分类‍DDL（Date Definiition Lanhuage）：数据定义语言，用来定义数据库对象（数据库、表、字段等）。 create table 表名;
-DML（Data Manipulation Language）：数据操作语言，...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri Jul 28 2023 10:37:46 GMT+0800">
-                2023-07-28
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/MySQL/">MySQL</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a class="read-more" href="/2023/07/28/MySQL%E5%AD%A6%E4%B9%A0/MySQL%E5%AD%A6%E4%B9%A0%20%EF%BD%9C%20%E4%BA%8C%E3%80%81SQL%E5%88%86%E7%B1%BB%E4%BB%A5%E5%8F%8ADDL%E8%AF%AD%E5%8F%A5%E7%9A%84%E8%AF%AD%E6%B3%95/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
