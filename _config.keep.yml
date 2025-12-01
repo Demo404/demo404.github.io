@@ -291,7 +291,7 @@ pjax:
 # ---------------------------------------------------------------------------------------
 footer:
   since: 2021  # The starting year of your website, Can be null
-  icp: 陇ICP备2021002930号        # ICP record number of your website, Can be null
+  icp: 陇ICP备2021002930号-3        # ICP record number of your website, Can be null
   site_deploy:
     enable: false       # Option values: true | false
     provider: github    # Option values: github | vercel | netlify | gitee | aliyun | tencent_cloud | upyun
