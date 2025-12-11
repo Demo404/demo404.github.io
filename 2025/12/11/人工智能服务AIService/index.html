@@ -11,7 +11,7 @@
     
     <title>
         
-            Ubuntu磁盘分区和挂载步骤 |
+            人工智能服务AIService |
         
         何进磊的小窝
     </title>
@@ -150,7 +150,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Ubuntu磁盘分区和挂载步骤</span>
+                <span class="title-hover-animation">人工智能服务AIService</span>
             </div>
 
             
@@ -172,37 +172,22 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2025-11-18 10:07:04</span>
-        <span class="mobile">2025-11-18 10:07</span>
+        <span class="pc">2025-12-11 15:27:32</span>
+        <span class="mobile">2025-12-11 15:27</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2025-11-18 10:07:04</span>
+        <span class="pc">2025-12-11 15:27:32</span>
     </span>
     
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Ubuntu/">Ubuntu</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>763 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>771 字</span>
         </span>
     
     
@@ -221,53 +206,24 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h4 id="一、预检查（确认-LVM-空闲空间与卷组名）"><a href="#一、预检查（确认-LVM-空闲空间与卷组名）" class="headerlink" title="一、预检查（确认 LVM 空闲空间与卷组名）"></a>一、预检查（确认 LVM 空闲空间与卷组名）</h4><p>先看看当前 LVM 信息，确认可以划出足够的容量：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo pvs        # 查看物理卷（PV）<br>sudo vgs        # 查看卷组（VG）及可用空间（VG Free）<br>sudo lvs        # 查看现有逻辑卷（LV）<br></code></pre></td></tr></table></figure>
+                <h4 id="一、什么是AIService"><a href="#一、什么是AIService" class="headerlink" title="一、什么是AIService"></a>一、什么是AIService</h4><p>AIService使用面向动态代理和接口的方式完成程序的编写，更灵活的实现高级功能的配置。</p>
+<h5 id="链Chain"><a href="#链Chain" class="headerlink" title="链Chain"></a>链Chain</h5><p>链是针对每个常见的用例都设置一条链，比如聊天机器人和检索增强生成等。链将底层多个组件组合起来并协调他们之间的交互。<b>缺点</b>：不够灵活</p>
+<h5 id="AIService常见的处理操作"><a href="#AIService常见的处理操作" class="headerlink" title="AIService常见的处理操作"></a>AIService常见的处理操作</h5><p>1、为大语言模型格式化输入内容<br>2、解析大预言模型的输出结果<br>3、聊天记忆 chat memory<br>4、工具 tools<br>5、检索增强生成 RAG</p>
+<h4 id="二、创建一个最简单的AIService"><a href="#二、创建一个最简单的AIService" class="headerlink" title="二、创建一个最简单的AIService"></a>二、创建一个最简单的AIService</h4><h5 id="1、通过模型注入创建AIService"><a href="#1、通过模型注入创建AIService" class="headerlink" title="1、通过模型注入创建AIService"></a>1、通过模型注入创建AIService</h5><p>定义接口<code>Assistent.java</code>,包含一个方法chat()</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">public interface Assistent &#123;<br><br>    String chat(String prompt);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>调用自定义的chat方法，使用<code>OpenAiChatModel</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">@SpringBootTest(classes = XiaozhiApp.class)<br>public class AIServiceTest &#123;<br><br>    @Autowired<br>    private OpenAiChatModel openAiChatModel;<br><br>    @Test<br>    public void testAIService()&#123;<br><br>        Assistent assistent = AiServices.create(Assistent.class, openAiChatModel);<br>        String response = assistent.chat(&quot;请介绍一下你自己。&quot;);<br>        System.out.println(&quot;AI Response: &quot; + response);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>执行该测试程序，输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">2025-12-11T16:02:00.718+08:00 DEBUG 50590 --- [Http TaskRunner] okhttp3.internal.concurrent.TaskRunner   : Q10005 finished run in 240 µs: OkHttp ConnectionPool<br>AI Response: 你好！我是通义千问（Qwen），由阿里巴巴集团旗下的通义实验室自主研发的超大规模语言模型。我可以帮助你回答问题、创作文字，比如写故事、写公文、写邮件、写剧本、逻辑推理、编程等等，还能表达观点，玩游戏等。<br><br>我支持多种语言，包括但不限于中文、英文、德语、法语、西班牙语等，能够满足国际化的使用需求。同时，我基于大量的互联网文本训练，具备广泛的知识和理解能力。<br><br>如果你有任何问题或需要帮助，随时告诉我！😊<br></code></pre></td></tr></table></figure>
+<h5 id="通过使用-AIService注解"><a href="#通过使用-AIService注解" class="headerlink" title="通过使用@AIService注解"></a>通过使用@AIService注解</h5><p>使用@AiService注解来简化注入步骤，直接在接口上增加@AiService注解</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">@AiService<br>public interface Assistent &#123;<br><br>    String chat(String prompt);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>调用模型时不再注入模型到上下文中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">@Autowired<br>private Assistent assistent;<br><br>@Test<br>public void testAIServiceWithSpring()&#123;<br>    String response = assistent.chat(&quot;请介绍一下我自己。&quot;);<br>    System.out.println(&quot;AI Response: &quot; + response);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>此时如果上下文中有多个模型则会运行报错：<br><code>Caused by: dev.langchain4j.service.IllegalConfigurationException: Conflict: multiple beans of type dev.langchain4j.model.chat.ChatLanguageModel are found: [ollamaChatModel, openAiChatModel]. Please specify which one you wish to wire in the @AiService annotation like this: @AiService(wiringMode = EXPLICIT, chatModel = &quot;&lt;beanName&gt;&quot;).</code>,需要在@AiService中明确执行使用哪一个模型，修改接口如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">@AiService(wiringMode = EXPLICIT, chatModel = &quot;openAiChatModel&quot;)<br>public interface Assistent &#123;<br><br>    String chat(String prompt);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>再次重新运行则正常输出相应内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">2025-12-11T16:01:08.799+08:00 DEBUG 50574 --- [Http TaskRunner] okhttp3.internal.concurrent.TaskRunner   : Q10005 finished run in 189 µs: OkHttp ConnectionPool<br>AI Response: 你好！不过我还不太了解你，所以无法准确地介绍你。如果你愿意告诉我一些关于你的信息——比如你的兴趣爱好、职业、学习背景、所在地区，或者你希望别人怎么看待你——我很乐意根据你提供的内容，帮你写一段个性化的自我介绍！😊<br></code></pre></td></tr></table></figure>
 
-<p>期望看到 ubuntu-vg（或类似名）有大约剩余 ~9.9T 的空闲空间（VG Free）。示例里面要关注的字段：VG 名称（这里例子是 ubuntu-vg）与 VG Free（必须 &gt;&#x3D; 9T）。</p>
-<h4 id="二、创建逻辑卷（9T）"><a href="#二、创建逻辑卷（9T）" class="headerlink" title="二、创建逻辑卷（9T）"></a>二、创建逻辑卷（9T）</h4><p>将 9T 从卷组里分配到新的 LV（这里 LV 名称用 minio，可以自定义）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo lvcreate -n minio -L 9T ubuntu-vg<br></code></pre></td></tr></table></figure>
-<p>说明：</p>
-<ul>
-<li>-n minio 是 LV 名称 &#x2F;dev&#x2F;ubuntu-vg&#x2F;minio</li>
-<li>-L 9T 分配 9 TB（注意 T 为 Tebibyte 还是 TB，LVM 默认是 TiB）</li>
-<li>ubuntu-vg 是示例卷组名，若你 vgs 看到不同名请替换为真实的 VG 名称</li>
-</ul>
-<p>创建成功后确认：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo lvs -o+devices<br># 或<br>sudo lvdisplay /dev/ubuntu-vg/minio<br></code></pre></td></tr></table></figure>
-
-<h4 id="三、格式化为-XFS（推荐-XFS-用于大文件-对象存储）"><a href="#三、格式化为-XFS（推荐-XFS-用于大文件-对象存储）" class="headerlink" title="三、格式化为 XFS（推荐 XFS 用于大文件&#x2F;对象存储）"></a>三、格式化为 XFS（推荐 XFS 用于大文件&#x2F;对象存储）</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo mkfs.xfs -f /dev/ubuntu-vg/minio<br></code></pre></td></tr></table></figure>
-<p>说明：</p>
-<ul>
-<li>-f 强制格式化（如果是新创建 LV 通常不必要，但保险写上）</li>
-<li>XFS 对大容量&#x2F;并发写入表现好，MinIO 推荐 XFS（或 ext4 也行）</li>
-</ul>
-<h4 id="四、创建挂载点并挂载（临时挂载验证）"><a href="#四、创建挂载点并挂载（临时挂载验证）" class="headerlink" title="四、创建挂载点并挂载（临时挂载验证）"></a>四、创建挂载点并挂载（临时挂载验证）</h4><p>创建目录并挂载：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo mkdir -p /data<br>sudo mount /dev/ubuntu-vg/minio /data<br></code></pre></td></tr></table></figure>
-<p>检查挂载：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">df -hT /data<br># 或<br>lsblk -f<br></code></pre></td></tr></table></figure>
-<p>应看到 &#x2F;dev&#x2F;mapper&#x2F;ubuntu–vg-minio 已挂载到 &#x2F;data，文件系统类型 xfs，容量约 9T。</p>
-<h4 id="五、设置合适的挂载选项并写入-etc-fstab（自动挂载且优化）"><a href="#五、设置合适的挂载选项并写入-etc-fstab（自动挂载且优化）" class="headerlink" title="五、设置合适的挂载选项并写入 &#x2F;etc&#x2F;fstab（自动挂载且优化）"></a>五、设置合适的挂载选项并写入 &#x2F;etc&#x2F;fstab（自动挂载且优化）</h4><p>建议使用 XFS 常用选项：noatime,nodiratime,attr2,inode64。把设备用 UUID 写入 fstab 更稳妥：<br>先获取 &#x2F;dev 的 UUID：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo blkid /dev/ubuntu-vg/minio<br></code></pre></td></tr></table></figure>
-<p>复制 UUID&#x3D;”…” 部分，然后编辑 &#x2F;etc&#x2F;fstab（用 root 权限）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo cp /etc/fstab /etc/fstab.bak    # 备份 fstab<br>sudo vi /etc/fstab<br></code></pre></td></tr></table></figure>
-<p>添加一行（用你上一步得到的 UUID:71800ad3-9c32-45f2-8915-92888db5b1fe 替换 <YOUR-UUID>；如果不想用 UUID，也可用设备路径 &#x2F;dev&#x2F;ubuntu-vg&#x2F;minio）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">UUID=&lt;YOUR-UUID&gt;  /data  xfs  defaults,noatime,nodiratime,attr2,inode64  0  2<br></code></pre></td></tr></table></figure>
-<p>保存后测试 fstab 无误并重新挂载（先卸载再 mount -a）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo umount /data<br>sudo mount -a<br>mount | grep &#x27; /data &#x27;<br></code></pre></td></tr></table></figure>
-<p>如果 mount -a 没报错，说明写入成功。</p>
-<h4 id="六、设定目录权限（给-MinIO-或其他服务用）"><a href="#六、设定目录权限（给-MinIO-或其他服务用）" class="headerlink" title="六、设定目录权限（给 MinIO 或其他服务用）"></a>六、设定目录权限（给 MinIO 或其他服务用）</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sudo useradd -r -s /sbin/nologin minio || true<br>sudo chown -R minio:minio /data<br>sudo chmod 750 /data<br></code></pre></td></tr></table></figure>
-<ul>
-<li>说明：如果已经有 minio 用户就不需要创建 useradd（|| true 保证已存在不会报错）。</li>
-</ul>
-<h4 id="七、验证空间与权限"><a href="#七、验证空间与权限" class="headerlink" title="七、验证空间与权限"></a>七、验证空间与权限</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">df -h /data<br>sudo ls -ld /data<br>sudo ls -la /data<br>sudo getfattr -d -m - /data   # optional, 查看 xfs 属性<br></code></pre></td></tr></table></figure>
-
-<h4 id="八、如果将来想扩容或缩小"><a href="#八、如果将来想扩容或缩小" class="headerlink" title="八、如果将来想扩容或缩小"></a>八、如果将来想扩容或缩小</h4><ul>
-<li>扩容：如果 VG 还有空闲空间，可用 lvextend -L +XG &#x2F;dev&#x2F;ubuntu-vg&#x2F;minio 然后 xfs_growfs &#x2F;data 在线扩容（XFS 支持在线扩展）。</li>
-<li>缩小：XFS 不支持在线缩小，缩小比较复杂，需备份、重建文件系统或转换为 ext4 并小心操作。</li>
-</ul>
-<p>示例扩容命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext"># 假设还剩余 1T 空间，扩展 1T<br>sudo lvextend -L +1T /dev/ubuntu-vg/minio<br>sudo xfs_growfs /data<br>df -h /data<br></code></pre></td></tr></table></figure>
             </div>
 
             
@@ -276,16 +232,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">Ubuntu磁盘分区和挂载步骤</span>
+            <span class="type">本文标题</span>：<span class="content">人工智能服务AIService</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">何进磊</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2025-11-18 10:07:04</span>
+            <span class="type">创建时间</span>：<span class="content">2025-12-11 15:27:32</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2025/11/18/中间件/Ubuntu磁盘分区和挂载步骤/</span>
+            <span class="type">本文链接</span>：<span class="content">2025/12/11/人工智能服务AIService/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -300,45 +256,18 @@
             
 
             
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">#操作系统</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/Ubuntu/">#Ubuntu</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
 
             
                 <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2025/12/11/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1AIService/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">人工智能服务AIService</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
                     
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2025/11/18/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ubuntu%E6%96%B0%E8%A3%85%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9root%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/"
+                               href="/2025/11/18/%E4%B8%AD%E9%97%B4%E4%BB%B6/Ubuntu%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8C%E6%8C%82%E8%BD%BD%E6%AD%A5%E9%AA%A4/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Ubuntu 22.04 新装的系统如何修改root用户密码</span>
+                                <span class="post-nav-title-item">Ubuntu磁盘分区和挂载步骤</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
